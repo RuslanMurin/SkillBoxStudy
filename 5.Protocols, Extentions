@@ -1,0 +1,427 @@
+//2. инвентарь
+protocol Storable{
+    func store(in inventory:Inventory) -> String
+}
+
+class Weapon{
+    var name = ""
+    var damage: Int
+    init(name:String, damage:Int) {
+        self.name = name
+        self.damage = damage
+    }
+}
+ class Armor{
+    var name = ""
+    var protection: Int
+    init(name:String, protection:Int) {
+        self.name = name
+        self.protection = protection
+    }
+}
+ class Potions{
+    var name = ""
+    var heal: Int
+    init(name:String, heal:Int) {
+        self.name = name
+        self.heal = heal
+    }
+}
+ class QuestItems{
+    var name = ""
+    init(name:String) {
+        self.name = name
+    }
+}
+extension Weapon: Storable{
+    func store(in inventory: Inventory) -> String {
+        return "\(name) with \(damage) damage"
+    }
+}
+extension Armor: Storable{
+    func store(in inventory: Inventory) -> String {
+        return "\(name) with \(protection) protection"
+    }
+}
+extension Potions: Storable{
+    func store(in inventory: Inventory) -> String {
+        return "\(name) with \(heal) heal power"
+    }
+}
+extension QuestItems: Storable{
+    func store(in inventory: Inventory) -> String {
+        return "\(name)"
+    }
+}
+
+class Inventory{
+    func store(elements: Storable...) -> String{
+        var result = "Your inventory: "
+        for el in elements{
+            result += el.store(in: self) + "; "
+        }
+        return result
+    }
+}
+
+
+var dagger = Weapon(name: "Dagger", damage: 10)
+var mail = Armor(name: "Chain mail", protection: 19)
+var greatPotion = Potions(name: "Great heal potion", heal: 100)
+var catalinasRing = QuestItems(name: "Catalina's ring")
+
+var inventory = Inventory()
+inventory.store(elements: dagger, mail, greatPotion, catalinasRing)
+print(inventory.store(elements: dagger, mail, greatPotion, catalinasRing))
+//Такой получился инвентарь: Предметы разделил по классам(в принципе как и делается в РПГ играх)
+
+//карта
+
+protocol Creatable{
+    func create(in map: Map) -> String
+}
+protocol Moveble {
+    func move(in map: Map) -> String
+}
+
+class Player: Creatable, Moveble{
+    func create(in map: Map) -> String {
+        return "Player created"
+    }
+    func move(in map: Map) -> String {
+        return "Player moves"
+    }
+}
+class Monster: Creatable, Moveble{
+    func create(in map: Map) -> String {
+        return "Monster created"
+    }
+    func move(in map: Map) -> String {
+        return "Monster moves"
+    }
+}
+class Wall: Creatable{
+    func create(in map: Map) -> String {
+        return "Wall created"
+    }
+}
+class Tree: Creatable{
+    func create(in map: Map) -> String {
+        return "Tree created"
+    }
+}
+class Map{
+    func create(objects: Creatable...) -> String {
+        var create = ""
+        for object in objects{
+            create += object.create(in: self) + "; "
+        }
+        return create
+    }
+    func move(subjects: Moveble...) -> String{
+        var move = ""
+        for subject in subjects{
+            move += subject.move(in: self) + "; "
+        }
+        return move
+    }
+}
+
+let player = Player()
+let monster = Monster()
+let tree = Tree()
+let wall = Wall()
+
+let map = Map()
+map.create(objects: wall, tree, monster, player)
+map.move(subjects: monster, player)
+
+//соответственно деревья и стены двигаться не могут
+//Машины
+protocol Audi{
+    func model() -> (String, String)
+}
+class Equipment{
+    let price:Int
+    let name:String
+    let color:String
+    let engineVolume:Double
+    init(name: String, price: Int, color: String, engineVolume:Double) {
+        self.color = color
+        self.name = name
+        self.engineVolume = engineVolume
+        self.price = price
+    }
+}
+class A6:Equipment, Audi{
+
+    func model() -> (String, String) {
+        let model = "A6"
+        let image = "\(model).jpg"
+        return (model, image)
+    }
+}
+class A7:Equipment, Audi {
+    func model() -> (String, String) {
+        let model = "A7"
+        let image = "\(model).jpg"
+        return (model, image)
+    }
+}
+class A8:Equipment, Audi {
+    func model() -> (String, String) {
+        let model = "A8"
+        let image = "\(model).jpg"
+        return (model, image)
+    }
+}
+let a6Comfort = A6(name: "Comfort", price: 2840000, color: "Grey", engineVolume: 1.8)
+let a6Business = A6(name: "Business", price: 3132000, color: "Black", engineVolume: 2.0)
+let a6Sport = A6(name: "Sport", price: 3340000, color: "Red", engineVolume: 3.0)
+
+let a7Advance = A7(name: "S tronic Advance", price: 4895000, color: "White", engineVolume: 2.0)
+let a7Design = A7(name: "S tronic Design", price: 5335000, color: "Grey", engineVolume: 3.0)
+let a7Sport = A7(name: "S tronic Sport", price: 5485000, color: "Matte Black", engineVolume: 3.5)
+
+let a8l = A8(name: "tiptronic L", price: 7134000, color: "Grey", engineVolume: 3.0)
+let a8Business = A8(name: "tiptronic Business", price: 8100000, color: "Black", engineVolume: 3.5)
+let a8lBusiness = A8(name: "tiptronic L Business", price: 9311000, color: "Anthracite", engineVolume: 4.0)
+
+//Наверное, не максимально лаконичная запись, но мне показалась такая формулировка кода очень удобной в понимании
+/*
+ <pre>
+
+ protocol A{
+
+ func a()
+
+ }
+
+ protocol B{
+
+ func b()
+
+ }
+
+ extension B{
+
+ func b(){
+
+ print(&quot;extB&quot;)      //ошибки в синтаксисе(как я понимаю, это перевод ковычек и скобок???)
+
+ }
+
+ }
+
+ class C: A{
+
+ func a() {
+
+ print(&quot;A&quot;)
+
+ }
+
+ func c(){
+
+ print(&quot;C&quot;)
+
+ }
+
+ }
+
+ class D: C, B{
+
+ func b() {
+
+ print(&quot;B&quot;)
+
+ }
+
+ func d(){
+
+ print(&quot;D&quot;)
+
+ }
+
+ }
+
+ </pre>
+
+
+
+ let v1: A = D()
+
+ v1.a()
+
+ let v2: B = C()
+
+ v2.c()
+
+ let v3: C = D()
+
+ v3.d()
+
+ let v4: D = D()
+
+ v4.a()
+
+
+ */
+
+//допы к 3 уроку
+//2
+func bubbleSort(_ array: Int...) -> [Int]{
+    var check = array
+    guard check.count > 1 else { return check }
+    
+   for primaryIndex in 0..<check.count {
+   let passes = (check.count - 1) - primaryIndex
+    
+    for secondaryIndex in 0..<passes {
+    let key = check[secondaryIndex]
+    
+    if (key > check[secondaryIndex + 1]) {
+        check.swapAt(secondaryIndex, secondaryIndex + 1)
+    }
+}
+    }
+    return check
+}
+
+    _ = bubbleSort(3, 5, 6, 8, 1)
+
+func insertSort(_ array: Int...) -> [Int]{
+    var check = array
+       guard check.count > 1 else { return check }
+    
+    for primaryindex in 0..<check.count {
+    
+    let key = check[primaryindex]
+    var secondaryindex = primaryindex
+        
+        while secondaryindex > -1 {
+        if key < check[secondaryindex] {
+            
+            check.remove(at: secondaryindex + 1)
+            check.insert(key, at: secondaryindex)
+        }
+        secondaryindex -= 1
+        }
+    }
+    return check
+}
+var c = insertSort(4, 6, 1, 9, 2, 7)
+
+//3.
+func mean(_ array: Int...) -> Int? {
+    if array .isEmpty{
+        return nil
+    }
+    else{
+    var sum = 0
+    for el in array{
+        sum += el
+    }
+    let mean: Int? = sum / array.count
+    return (mean)
+    }
+}
+mean() //теперь, если на входе получить пустой массив,то вернется nil
+
+//4.
+
+var a: Int{
+    func b() -> Int{
+        let b = a + 1       //функция внутри переменной
+        return b
+    }
+    return b()
+}
+
+func rec(){
+    func inRec(){           //вложенная функция
+    }
+}
+//5.
+/*
+  let max = Int(String(Int.max))!
+  let overflow = max + 1                //упадет на второй строчке. из-за ! скомпилируется принудительно, но при прибавлении 1 вылетит. max не
+ содержит значение, так как оно выходит за пределы int.
+ */
+
+//6.
+//let overflow = Int.max + 1        //не скомпилируется, так как значение уже перегружено. разница в том, что в 5 задании мы как бы "Вынудили"
+// компилятор скомпилировать максимум
+
+//допы к 4 уроку
+//1.
+enum Autorisation{
+    case login(String)
+    case mail(String)
+    case phoneNumber(Int)
+}
+var autorise = Autorisation.login("Vasya348")
+autorise = .mail("vasily348@yahoo.com")
+autorise = .phoneNumber(89995553535)
+switch autorise {
+case .login(let login):
+    print("Login is: \(login)")
+case .mail(let mail):
+    print("Mail is: \(mail)")
+case .phoneNumber(let number):
+    print("Phone number is: \(number)")
+}
+
+//2.
+enum FamilyTree{
+    case member(String)
+    indirect case parents(FamilyTree, FamilyTree)
+    indirect case grandParents(FamilyTree, FamilyTree)
+}
+var me = FamilyTree.member("Me")
+let mom = FamilyTree.member("Mother")
+let dad = FamilyTree.member("Father")
+let grandMother = FamilyTree.member("Grandmother")
+let grandFather = FamilyTree.member("Grandfather")
+let parents = FamilyTree.parents(mom, dad)
+let grands = FamilyTree.grandParents(grandFather, grandMother)
+
+func tree(_ expression: FamilyTree) -> String {
+    switch expression {
+    case let .member(name):
+        return "\(name)"
+    case let .parents(left, right):
+        return "My parents: \(left), \(right)"
+    case let .grandParents(left, right):
+        return "My grandparents: \(left), \(right)"
+    }
+}
+print(tree(.member("Anton")))
+
+
+/*3. struct CGRect содержит положение и размеры прямоугольника
+     struct CGSize содержит параметры длины и ширины
+     struct CGPoint содержит точку в двумерной системе координат(положение)
+ */
+
+//4.
+class A{
+    class B{                    //Внутри классов, структур и энумов в прнципе можно реализовать их все, поскольку все они могут содержать свойства
+    }                           //и методы
+}
+struct C{
+    struct D{
+    }
+}
+enum E{
+    enum F{
+    }
+}
+//protocol Prot1{
+//    protocol Prot2{               реализовать протокол внутри протокола в принципе невозможно, поскольку протокол и есть набор правил
+//    }
+//}
+//class Prop{
+//    protocol Deq {                то же самое, протокол в принципе не является ни свойством, ни методом
+//    }
+//}
