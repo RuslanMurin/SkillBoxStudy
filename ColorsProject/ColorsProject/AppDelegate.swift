@@ -31,7 +31,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If any sessions were discarded while the application was not running, this will be called shortly after application:didFinishLaunchingWithOptions.
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
-
-
 }
 
+enum ColorPallete: Int {
+    case green
+    case blue
+    case red
+// Color cases
+    var rgb: UIColor {
+            switch rawValue {
+            case 0:
+                return .green
+            case 1:
+                return .blue
+            case 2:
+                return .red
+            default:
+                return .black
+            }
+        }
+// UIColor values
+    var selectedDescription: String {
+        switch rgb {
+        case .green:
+            return "Green color selected"
+        case .blue:
+            return "Blue color selected"
+        case .red:
+            return "Red color selected"
+        default:
+            return ""
+        }
+    }
+// Descriptions based on UIColor values
+
+    // add more computed property if needed
+}

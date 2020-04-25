@@ -6,37 +6,29 @@ class SecondViewController: UIViewController {
     
     private var pickerVC: ColorPickerViewController?
     
-    var mainColor = "Green color selected"
+    var mainColor = ColorPallete.green
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        mainColorLabel.text = mainColor
+        mainColorLabel.text = mainColor.selectedDescription
     }
 
+    @IBAction func editPressed(_ unwindSegue: UIStoryboardSegue){
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     if let vc = segue.destination as? ColorPickerViewController, segue.identifier == "ShowColorPicker"{
-            vc.pickedColor = mainColor
-            pickerVC = vc
+        vc.pickedColor = mainColor
+        pickerVC = vc
         vc.delegate = self
-        switch mainColor {
-        case "Green color selected":
-            vc.textColor = "Green"
-        case "Red color selected":
-            vc.textColor = "Red"
-        case "Blue color selected":
-            vc.textColor = "Blue"
-        default:
-            return
-        }
     }
-}
-    
+  }
 }
 
 extension SecondViewController: ColorPickerDelegate{
     func setText(_ text: String) {
-        mainColor = (pickerVC?.mainText ?? "")
-        mainColorLabel.text = mainColor
+        mainColor = (pickerVC?.pickedColor ?? ColorPallete.green)
+        mainColorLabel.text = mainColor.selectedDescription
     }
 }
 

@@ -7,40 +7,32 @@ class ColorPickerViewController: UIViewController {
     var delegate: ColorPickerDelegate?
     
     @IBOutlet weak var pickedColorLabel: UILabel!
-    var pickedColor = ""
-    var textColor = ""
+   
+    var pickedColor: ColorPallete?
     var mainText = ""
-    override func viewDidLoad() {
-        
-        super.viewDidLoad()
-        pickedColorLabel.text = pickedColor
-        
-        switch textColor {
-            case "Green":
-                pickedColorLabel.textColor = .green
-            case "Blue":
-                pickedColorLabel.textColor = .blue
-            case "Red":
-                pickedColorLabel.textColor = .red
-        default:
-            return
-        }
-    }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        pickedColorLabel.text = pickedColor?.selectedDescription
+        pickedColorLabel.textColor = pickedColor?.rgb
+    }
+
     @IBAction func greenSelected(){
-        mainText = "Green color selected"
+        pickedColor = .green
+        mainText = (pickedColor?.selectedDescription ?? "")
         delegate?.setText(mainText)
-        dismiss(animated: true, completion: nil)
     }
     @IBAction func blueSelected(){
-        mainText = "Blue color selected"
+        pickedColor = .blue
+        mainText = (pickedColor?.selectedDescription ?? "")
         delegate?.setText(mainText)
-        dismiss(animated: true, completion: nil)
     }
     @IBAction func redSelected(){
-        mainText = "Red color selected"
+        pickedColor = .red
+        mainText = (pickedColor?.selectedDescription ?? "")
         delegate?.setText(mainText)
-        dismiss(animated: true, completion: nil)
     }
+    
+    
     
 }

@@ -126,7 +126,6 @@
         <!--Tab Bar Controller-->
         <scene sceneID="P2O-YO-aLd">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="8ne-Bb-w6p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="Mta-hX-h24" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Sjp-iv-B5e"/>
@@ -142,6 +141,7 @@
                         <segue destination="iTq-Pf-Tnf" kind="relationship" relationship="viewControllers" id="km4-0G-V2N"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8ne-Bb-w6p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-245" y="881"/>
         </scene>
@@ -164,6 +164,7 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Edit"/>
                                 <connections>
+                                    <action selector="editPressed:" destination="FOl-XZ-e9W" eventType="touchUpInside" id="gGU-ix-w0R"/>
                                     <segue destination="Xlt-Th-52x" kind="show" identifier="ShowColorPicker" id="ar0-1t-Teq"/>
                                 </connections>
                             </button>
@@ -219,7 +220,8 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Select Green"/>
                                 <connections>
-                                    <action selector="greenSelected" destination="Xlt-Th-52x" eventType="touchUpInside" id="XeS-x1-7IA"/>
+                                    <action selector="greenSelected" destination="Xlt-Th-52x" eventType="touchUpInside" id="a4Q-xo-7k9"/>
+                                    <segue destination="ruo-Hc-dil" kind="unwind" unwindAction="editPressed:" id="3Hg-Wb-DnK"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hfV-WR-OMz">
@@ -233,7 +235,8 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Select Blue"/>
                                 <connections>
-                                    <action selector="blueSelected" destination="Xlt-Th-52x" eventType="touchUpInside" id="Nc3-it-ct6"/>
+                                    <action selector="blueSelected" destination="Xlt-Th-52x" eventType="touchUpInside" id="SsM-qA-u6d"/>
+                                    <segue destination="ruo-Hc-dil" kind="unwind" unwindAction="editPressed:" id="O1w-dn-izt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yw1-hA-yH4">
@@ -247,7 +250,8 @@
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <state key="normal" title="Select Red"/>
                                 <connections>
-                                    <action selector="redSelected" destination="Xlt-Th-52x" eventType="touchUpInside" id="lZL-dS-Pno"/>
+                                    <action selector="redSelected" destination="Xlt-Th-52x" eventType="touchUpInside" id="hex-Ot-gbe"/>
+                                    <segue destination="ruo-Hc-dil" kind="unwind" unwindAction="editPressed:" id="rVZ-cQ-1wO"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Green color selected" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O8n-pB-l6x">
@@ -281,6 +285,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GUJ-rz-REm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="ruo-Hc-dil" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1957.9710144927537" y="880.58035714285711"/>
         </scene>
@@ -426,6 +431,7 @@
                             <constraint firstItem="0lb-fT-7tw" firstAttribute="top" secondItem="PFK-fD-9Fs" secondAttribute="bottom" constant="36.666666666666657" id="q3f-Ka-FWl"/>
                             <constraint firstItem="EHr-UP-EUz" firstAttribute="centerX" secondItem="WFo-Qc-1t8" secondAttribute="centerX" id="ucF-IG-T8u"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="8L0-vc-ECF"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oGg-sd-hNC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
