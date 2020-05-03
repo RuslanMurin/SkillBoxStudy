@@ -13,17 +13,15 @@ class ViewController: UIViewController {
 
     @IBAction func nextButtonPressed(){
         currentIndex += 1
-        if currentIndex <= 9 && currentIndex >= 0{
-            MainImageView.image = currentImage[currentIndex]}
-        else {currentIndex -= 1}
+        guard currentIndex <= 9  else { return currentIndex -= 1 }
+        MainImageView.image = currentImage[currentIndex]
     }
     
     @IBAction func previousButtonPressed(){
         currentIndex -= 1
-        if currentIndex <= 9 && currentIndex >= 0{
-            MainImageView.image = currentImage[currentIndex]}
-        else {currentIndex += 1}
-        }
-
+        guard currentIndex >= 0 else { return currentIndex += 1 }
+            MainImageView.image = currentImage[currentIndex]
+        
+    }
 }
 

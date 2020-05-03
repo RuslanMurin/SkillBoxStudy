@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="cZj-u6-mLP">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -72,17 +72,35 @@
             </objects>
             <point key="canvasLocation" x="1195.6521739130435" y="-360.26785714285711"/>
         </scene>
+        <!--Images-->
+        <scene sceneID="aQ6-Zi-HHR">
+            <objects>
+                <viewController id="7BJ-sR-lO3" customClass="ImagesViewController" customModule="StandartUIComponents" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9Xx-Lt-3ay">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="fjU-Ct-Sjb"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Images" id="flo-CO-Qwt"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QNq-mf-taP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2055.072463768116" y="27.455357142857142"/>
+        </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="lPA-1J-IQx">
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="cZj-u6-mLP" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="OSu-ur-W4u">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
                     <connections>
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="o4W-GI-SDc"/>
+                        <segue destination="7BJ-sR-lO3" kind="relationship" relationship="viewControllers" id="jMs-Ia-gRz"/>
                         <segue destination="xyF-KX-o0I" kind="relationship" relationship="viewControllers" id="Dd0-7M-AC2"/>
                     </connections>
                 </tabBarController>

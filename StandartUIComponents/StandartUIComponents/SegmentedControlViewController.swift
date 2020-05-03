@@ -18,23 +18,11 @@ class SegmentedControlViewController: UIViewController {
     }
   
     @IBAction func choiceSegment(){
-        switch mainSegmentedControl.selectedSegmentIndex {
-        case 0:
-            greenView.isHidden = false
-            blueView.isHidden = true
-            purpleView.isHidden = true
-        case 1:
-            greenView.isHidden = true
-            blueView.isHidden = false
-            purpleView.isHidden = true
-        case 2:
-            greenView.isHidden = true
-            blueView.isHidden = true
-            purpleView.isHidden = false
-        default:
-            return
+        for (index, el) in [greenView, blueView, purpleView].enumerated() {
+            if mainSegmentedControl.selectedSegmentIndex == index{
+                el?.isHidden = false
+            }
+            else { el?.isHidden = true}
         }
-        
     }
-    
 }
