@@ -14,6 +14,6 @@ class StackViewVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        stackViewHeightConstraint.constant = self.view.frame.height / 2
     }
+    
 }

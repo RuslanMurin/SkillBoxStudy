@@ -274,34 +274,32 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="fvK-ZD-zDB">
-                                <rect key="frame" x="8" y="394.5" width="398" height="112"/>
+                                <rect key="frame" x="8" y="226.5" width="398" height="448"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gYC-id-idh">
-                                        <rect key="frame" x="0.0" y="0.0" width="398" height="34.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="398" height="146.5"/>
                                         <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Button"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="REz-gY-VkX">
-                                        <rect key="frame" x="0.0" y="38.5" width="398" height="35"/>
+                                        <rect key="frame" x="0.0" y="150.5" width="398" height="147"/>
                                         <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <state key="normal" title="Button"/>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zod-An-tS8">
-                                        <rect key="frame" x="0.0" y="77.5" width="398" height="34.5"/>
+                                        <rect key="frame" x="0.0" y="301.5" width="398" height="146.5"/>
                                         <color key="backgroundColor" systemColor="systemYellowColor" red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title="Button"/>
                                     </button>
                                 </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="112" id="5Sa-m6-Ba1"/>
-                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="fvK-ZD-zDB" firstAttribute="height" secondItem="FaE-wx-2Db" secondAttribute="height" multiplier="1:2" id="Af4-2C-ANa"/>
                             <constraint firstItem="fvK-ZD-zDB" firstAttribute="leading" secondItem="UJh-wG-uqq" secondAttribute="leading" constant="8" id="SwT-Wq-bFI"/>
                             <constraint firstItem="fvK-ZD-zDB" firstAttribute="centerY" secondItem="UJh-wG-uqq" secondAttribute="centerY" id="gUe-eg-kul"/>
                             <constraint firstItem="UJh-wG-uqq" firstAttribute="trailing" secondItem="fvK-ZD-zDB" secondAttribute="trailing" constant="8" id="rCM-Qw-oxq"/>
@@ -309,9 +307,6 @@
                         <viewLayoutGuide key="safeArea" id="UJh-wG-uqq"/>
                     </view>
                     <navigationItem key="navigationItem" id="res-h3-xL8"/>
-                    <connections>
-                        <outlet property="stackViewHeightConstraint" destination="5Sa-m6-Ba1" id="aZW-uu-zVe"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FWn-Wk-Dqa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
