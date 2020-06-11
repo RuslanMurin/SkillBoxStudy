@@ -12,6 +12,8 @@ class MainTableViewCell: UITableViewCell {
 
     @IBOutlet weak var settingsLabel: UILabel!
     @IBOutlet weak var settingsIcon: UIImageView!
+
+    @IBOutlet weak var settingsSwitch: UISwitch!
     
     override func awakeFromNib() {
         super.awakeFromNib()

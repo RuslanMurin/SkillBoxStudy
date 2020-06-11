@@ -23,8 +23,6 @@ class SortedSettings{
 
 class TableVCViewController: UIViewController {
     @IBOutlet weak var mainTableview: UITableView!
-    
-//    let settingsNames = ["Авиарежим", "Wi-Fi", "Bluetooth", "Сотовая связь", "Режим модема", "Уведомления", "Звуки, тактильные сигналы", "Не беспокоить", "Экранное время", "Основные", "Пункт управления", "Экран и яркость", "Универсальный доступ", "Обои", "Siri и Поиск"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,12 +52,13 @@ extension TableVCViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell") as! MainTableViewCell
         let name = settings[indexPath.section].settingsNames[indexPath.row]
         cell.settingsLabel.text = name
-        if indexPath.row == 0 && indexPath.section == 0{
-            cell.accessoryView = UISwitch()
+        cell.settingsSwitch.isHidden = true
+        if name == "Авиарежим"{
+            cell.settingsSwitch.isHidden = false
         }
         return cell
     }

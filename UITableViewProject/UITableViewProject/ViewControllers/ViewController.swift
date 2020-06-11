@@ -7,31 +7,42 @@
 //
 
 import UIKit
+struct Images{
+    var images: UIImage?
+    var names: String
+}
+class ImagesContainer{
+    static func namedImages() -> [Images]{
+        return [Images(images: UIImage(named: "1"), names: "Lake"),
+                Images(images: UIImage(named: "2"), names: "Iced Lake"),
+                Images(images: UIImage(named: "3"), names: "Fjord"),
+                Images(images: UIImage(named: "4"), names: "Copper Mountain"),
+                Images(images: UIImage(named: "5"), names: "Big Mountain"),
+                Images(images: UIImage(named: "6"), names: "Forest")
+        ]
+    }
+}
 
 class ViewController: UIViewController {
-
-    let images: [UIImage?] = [UIImage(named: "1"), UIImage(named: "2"), UIImage(named: "3"), UIImage(named: "4"), UIImage(named: "5"), UIImage(named: "6")]
-    let names: [String] = ["Lake","Iced Lake","Fjord","Copper Mountain","Big Mountain","Forest"]
-    
-    
+    let namedImages = ImagesContainer.namedImages()
 }
 
 extension ViewController: UICollectionViewDelegateFlowLayout,UICollectionViewDataSource{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = UIScreen.main.bounds.width / 2
-        let height = UIScreen.main.bounds.height / 3 - 50
+        let width = collectionView.bounds.width / 2 - 20
+        let height = collectionView.bounds.height / 2
         return CGSize(width: width, height: height)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images.count
+        return namedImages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionCell", for: indexPath) as! MainCollectionViewCell
-        cell.photosImageView.image = images[indexPath.row]
-        cell.nameLabel.text = names[indexPath.row]
+        cell.photosImageView.image = namedImages[indexPath.row].images
+        cell.nameLabel.text = namedImages[indexPath.row].names
         return cell
     }
     
