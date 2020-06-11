@@ -13,8 +13,8 @@ final private class DefaultPlaceholderViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .lightGray
     }
-
-  // Настроить цвет по умолчанию.
+    
+    // Настроить цвет по умолчанию.
 }
 
 class ViewController: UIViewController {
@@ -30,7 +30,6 @@ class ViewController: UIViewController {
     
     private var placeholderVC: UIViewController = DefaultPlaceholderViewController()
     private var childs: [UIViewController] = []
-    private var defaultVC = DefaultPlaceholderViewController()
     
     func configureButtonStackView(){
         view.addSubview(buttonsStackView)
@@ -43,10 +42,10 @@ class ViewController: UIViewController {
     func setButtonStackView(){
         buttonsStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-                    buttonsStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-                    buttonsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-                    buttonsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-                    buttonsStackView.heightAnchor.constraint(equalToConstant: 30)
+            buttonsStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            buttonsStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            buttonsStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            buttonsStackView.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
     
@@ -61,10 +60,10 @@ class ViewController: UIViewController {
     func setVCsStack(){
         childVCStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-                    childVCStackView.topAnchor.constraint(equalTo: buttonsStackView.bottomAnchor),
-                    childVCStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-                    childVCStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-                    childVCStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            childVCStackView.topAnchor.constraint(equalTo: buttonsStackView.bottomAnchor),
+            childVCStackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            childVCStackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            childVCStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
     
@@ -80,36 +79,41 @@ class ViewController: UIViewController {
         
     }
     
-
-     
+    
+    
     func addVC(_ vc: UIViewController, buttonTitle: String, backgroundColor: UIColor) {
         assert(childs.count < 6, "Too many child ViewControllers: only 6 allowed")
         childs.append(vc)
         vc.view.backgroundColor = backgroundColor
-        if let tag = Int(buttonTitle){
-        print(tag)
-        vc.view.tag = tag + 10
-        print(vc.view.tag)
-        vc.title = "\(buttonTitle)vc"
+        vc.view.tag = childs.firstIndex(of: vc) ?? 0
         addButton(with: buttonTitle)
-        }
-         // Сохраняем контроллер, создаем кнопку, показываем кнопку.
-     }
-     
-     func setPlaceholder(_ vc: UIViewController) {
+        // Сохраняем контроллер, создаем кнопку, показываем кнопку.
+    }
+    
+    func setPlaceholder(_ vc: UIViewController) {
         self.placeholderVC = vc
-     }
-     
+    }
+    
     @objc func showHideContentVC(_ sender: UIButton) {
         sender.isSelected.toggle()
-        let index = buttonsStackView.arrangedSubviews.firstIndex(of: sender) ?? 0
-        let vc = childs[index] // Небезопасный способ. Подумайте, как можно по-другому.
+        let buttonIndex = Int(buttonsStackView.arrangedSubviews.firstIndex(of: sender) ?? 0)
+        let vc = childs[buttonIndex] // Небезопасный способ. Подумайте, как можно по-другому.
+        
+        
         if sender.isSelected {
-          // показываем
-          showChildVC(vc)
+            
+            showChildVC(vc)
+            
+            for (_, sv) in childVCStackView.arrangedSubviews.enumerated(){
+                if sv.tag > vc.view.tag{
+                    sv.removeFromSuperview()
+                    childVCStackView.addArrangedSubview(sv)
+                }
+            }
+            // показываем
         } else {
-          // скрываем
-          hideChildVC(vc)
+            // скрываем
+            hideChildVC(vc)
         }
         
         if children.isEmpty {
@@ -118,23 +122,22 @@ class ViewController: UIViewController {
         else{
             hideChildVC(placeholderVC)
         }
-         // Показываем или скрываем контент контроллер, который соответствует кнопке
-         // Если все контент контроллеры скрыты, то показываем placeholder
-     }
-
+        // Показываем или скрываем контент контроллер, который соответствует кнопке
+        // Если все контент контроллеры скрыты, то показываем placeholder
+    }
+    
     private func showChildVC(_ childVC: UIViewController) {
         addChild(childVC)
         childVCStackView.addArrangedSubview(childVC.view)
-//        childVCStackView.addSubview(childVC.view)
         childVC.didMove(toParent: self)
-         // Функция для добавления контроллера в иерархию и его показа
-     }
-     
-     private func hideChildVC(_ childVC: UIViewController) {
+        // Функция для добавления контроллера в иерархию и его показа
+    }
+    
+    private func hideChildVC(_ childVC: UIViewController) {
         childVC.willMove(toParent: nil)
         childVC.view.removeFromSuperview()
         childVC.removeFromParent()
-         // Функция для удаления контроллера из иерархии и его скрытия
-     }
+        // Функция для удаления контроллера из иерархии и его скрытия
+    }
 }
 
