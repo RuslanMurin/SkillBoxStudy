@@ -8,16 +8,21 @@
 
 import UIKit
 struct Settings{
-    var settingsNames:[String] = []
+    var settingName: String
+    let shouldShowSwitch: Bool
+
+    init(name: String, shouldShowSwitch: Bool = false) {
+        self.settingName = name
+        self.shouldShowSwitch = shouldShowSwitch
+    }
 }
 class SortedSettings{
-    static func settings() -> [Settings]{
+    static func settings() -> [[Settings]]{
 
         return [
-                Settings(settingsNames: ["Авиарежим", "Wi-Fi", "Bluetooth", "Сотовая связь", "Режим модема"]),
-                Settings(settingsNames: ["Уведомления", "Звуки, тактильные сигналы", "Не беспокоить", "Экранное время"]),
-                Settings(settingsNames: ["Основные", "Пункт управления", "Экран и яркость", "Универсальный доступ", "Обои", "Siri и Поиск"])
-        ]
+            [Settings(name: "Авиарежим", shouldShowSwitch: true), Settings(name: "Wi-Fi"), Settings(name: "Bluetooth"), Settings(name: "Сотовая связь"), Settings(name: "Режим модема")],
+            [Settings(name: "Уведомления"), Settings(name: "Звуки, тактильные сигналы"), Settings(name: "Не беспокоить"), Settings(name: "Экранное время")],
+            [Settings(name: "Основные"), Settings(name: "Пункт управления"), Settings(name: "Экран и яркость"), Settings(name: "Универсальный доступ"), Settings(name: "Обои"), Settings(name: "Siri и Поиск") ]]
     }
 }
 
@@ -42,7 +47,7 @@ extension TableVCViewController: UITableViewDataSource, UITableViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return settings[section].settingsNames.count
+        return settings[section].count
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -54,10 +59,10 @@ extension TableVCViewController: UITableViewDataSource, UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TableCell") as! MainTableViewCell
-        let name = settings[indexPath.section].settingsNames[indexPath.row]
-        cell.settingsLabel.text = name
+        let name = settings[indexPath.section][indexPath.row]
+        cell.settingsLabel.text = name.settingName
         cell.settingsSwitch.isHidden = true
-        if name == "Авиарежим"{
+        if name.shouldShowSwitch == true{
             cell.settingsSwitch.isHidden = false
         }
         return cell
