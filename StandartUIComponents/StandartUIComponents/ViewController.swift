@@ -2,16 +2,22 @@ import UIKit
 
 class ViewController: UIViewController {
 
+<<<<<<< HEAD
 
     @IBOutlet weak var mainImageView: UIImageView!
     @IBOutlet weak var mainSlider: UISlider!
     @IBOutlet weak var mainStepper: UIStepper!
     
     var currentImage = ImageContainer.compactMap{ $0 }
+=======
+    @IBOutlet weak var MainImageView: UIImageView!
+    var currentImage = ImageContainer
+>>>>>>> master
     var currentIndex = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
+<<<<<<< HEAD
         mainImageView.image = currentImage[0]
         mainSlider.value = 0
         animatorStarted()
@@ -58,5 +64,22 @@ class ViewController: UIViewController {
     }
     
     
+=======
+        MainImageView.image = currentImage[currentIndex]
+    }
+
+    @IBAction func nextButtonPressed(){
+        currentIndex += 1
+        guard currentIndex <= 9  else { return currentIndex -= 1 }
+        MainImageView.image = currentImage[currentIndex]
+    }
+    
+    @IBAction func previousButtonPressed(){
+        currentIndex -= 1
+        guard currentIndex >= 0 else { return currentIndex += 1 }
+            MainImageView.image = currentImage[currentIndex]
+        
+    }
+>>>>>>> master
 }
 
