@@ -16,6 +16,70 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bZU-98-1Qg">
+<<<<<<< HEAD
+                                <rect key="frame" x="30" y="74" width="354" height="562"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="354" id="32O-uh-GeK"/>
+                                    <constraint firstAttribute="height" constant="562" id="P6P-6C-waX"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ygl-wI-oqh">
+                                <rect key="frame" x="294" y="700" width="90" height="30"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="dwt-wa-TSC"/>
+                                </constraints>
+                                <state key="normal" title="Stop">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hvh-oY-Cdu"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GpA-Kw-N2g">
+                                <rect key="frame" x="30" y="700" width="90" height="30"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="90" id="6lr-SU-p6L"/>
+                                </constraints>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="startPressed" destination="BYZ-38-t0r" eventType="touchUpInside" id="htu-22-ubR"/>
+                                </connections>
+                            </button>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minValue="0.0" maxValue="9" translatesAutoresizingMaskIntoConstraints="NO" id="btf-dQ-Gki">
+                                <rect key="frame" x="28" y="656" width="358" height="31"/>
+                                <connections>
+                                    <action selector="mainSliderChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="KBN-3B-eGL"/>
+                                </connections>
+                            </slider>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" wraps="YES" maximumValue="9" translatesAutoresizingMaskIntoConstraints="NO" id="uZk-AL-9Zr">
+                                <rect key="frame" x="160" y="698" width="94" height="32"/>
+                                <connections>
+                                    <action selector="mainStepperChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="WDq-Ep-3nL"/>
+                                </connections>
+                            </stepper>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="btf-dQ-Gki" firstAttribute="top" secondItem="bZU-98-1Qg" secondAttribute="bottom" constant="20" id="229-79-58w"/>
+                            <constraint firstItem="uZk-AL-9Zr" firstAttribute="leading" secondItem="GpA-Kw-N2g" secondAttribute="trailing" constant="40" id="36K-mb-wXI"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bZU-98-1Qg" secondAttribute="bottom" constant="177" id="3uY-4R-7oc"/>
+                            <constraint firstItem="btf-dQ-Gki" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="A0E-Xf-q50"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bZU-98-1Qg" secondAttribute="trailing" constant="30" id="CmF-WM-M0D"/>
+                            <constraint firstItem="uZk-AL-9Zr" firstAttribute="top" secondItem="btf-dQ-Gki" secondAttribute="bottom" constant="12" id="EwK-g0-XGe"/>
+                            <constraint firstItem="bZU-98-1Qg" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="30" id="JGw-Qa-PmW"/>
+                            <constraint firstItem="Ygl-wI-oqh" firstAttribute="leading" secondItem="GpA-Kw-N2g" secondAttribute="trailing" constant="174" id="KEn-Bs-CT0"/>
+                            <constraint firstItem="bZU-98-1Qg" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="OUk-qO-GZG"/>
+                            <constraint firstItem="GpA-Kw-N2g" firstAttribute="top" secondItem="bZU-98-1Qg" secondAttribute="bottom" constant="64" id="RdN-UD-72z"/>
+                            <constraint firstItem="Ygl-wI-oqh" firstAttribute="leading" secondItem="uZk-AL-9Zr" secondAttribute="trailing" constant="40" id="Vqi-Xx-vm2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="btf-dQ-Gki" secondAttribute="trailing" constant="30" id="aHY-bK-KKY"/>
+                            <constraint firstItem="GpA-Kw-N2g" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="fq1-8C-0MJ"/>
+                            <constraint firstItem="Ygl-wI-oqh" firstAttribute="top" secondItem="bZU-98-1Qg" secondAttribute="bottom" constant="64" id="gsz-m5-BDD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Ygl-wI-oqh" secondAttribute="trailing" constant="30" id="h4i-ch-Ixk"/>
+=======
                                 <rect key="frame" x="30" y="74" width="354" height="639"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="354" id="32O-uh-GeK"/>
@@ -60,12 +124,19 @@
                             <constraint firstItem="vyG-9T-SIO" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oRn-eD-jIS" secondAttribute="trailing" constant="8" symbolic="YES" id="Tq2-JJ-9Kc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vyG-9T-SIO" secondAttribute="trailing" constant="30" id="dN5-wx-tJX"/>
                             <constraint firstItem="oRn-eD-jIS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="k6D-Do-80P"/>
+>>>>>>> master
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="ImageView" id="S2o-iO-8NW"/>
                     <connections>
+<<<<<<< HEAD
+                        <outlet property="mainImageView" destination="bZU-98-1Qg" id="hWM-K2-hsS"/>
+                        <outlet property="mainSlider" destination="btf-dQ-Gki" id="ybJ-M5-twM"/>
+                        <outlet property="mainStepper" destination="uZk-AL-9Zr" id="aAr-Wu-rdb"/>
+=======
                         <outlet property="MainImageView" destination="bZU-98-1Qg" id="8yj-dQ-yR2"/>
+>>>>>>> master
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
