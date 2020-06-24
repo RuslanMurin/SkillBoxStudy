@@ -98,32 +98,32 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AlbumCell" rowHeight="134" id="Nu6-1E-aA5" customClass="AlbumTableViewCell" customModule="_0_1__Additional" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="134"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="AlbumCell" rowHeight="179" id="Nu6-1E-aA5" customClass="AlbumTableViewCell" customModule="_0_1__Additional" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="179"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nu6-1E-aA5" id="lxf-CT-DUG">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="134"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="179"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="qHO-AH-FdI">
-                                                    <rect key="frame" x="2" y="2" width="410" height="130"/>
+                                                    <rect key="frame" x="2" y="2" width="410" height="175"/>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Vhs-UK-gOS">
-                                                        <size key="itemSize" width="128" height="128"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="2" minimumInteritemSpacing="2" id="Vhs-UK-gOS">
+                                                        <size key="itemSize" width="180" height="173"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     </collectionViewFlowLayout>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ImageCell" id="zWP-DJ-uvK" customClass="ImageCollectionViewCell" customModule="_0_1__Additional" customModuleProvider="target">
-                                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                            <rect key="frame" x="0.0" y="1" width="180" height="173"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Wz0-Xp-SBr">
-                                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="180" height="173"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fY4-9P-aoN">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="c1" translatesAutoresizingMaskIntoConstraints="NO" id="fY4-9P-aoN">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="180" height="173"/>
                                                                     </imageView>
                                                                 </subviews>
                                                                 <constraints>
@@ -133,6 +133,7 @@
                                                                     <constraint firstItem="fY4-9P-aoN" firstAttribute="top" secondItem="Wz0-Xp-SBr" secondAttribute="top" id="q0a-68-eB6"/>
                                                                 </constraints>
                                                             </collectionViewCellContentView>
+                                                            <size key="customSize" width="180" height="173"/>
                                                             <connections>
                                                                 <outlet property="contentImageView" destination="fY4-9P-aoN" id="GRB-mc-QAO"/>
                                                             </connections>

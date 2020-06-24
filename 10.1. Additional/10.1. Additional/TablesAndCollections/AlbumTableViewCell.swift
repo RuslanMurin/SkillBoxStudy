@@ -13,8 +13,21 @@ struct Images{
 
 class ImagesContainer{
     static func images() -> [[Images]]{
+        var catsImgs: [Images] = []
+        var mealImgs: [Images] = []
+        var natureImgs: [Images] = []
+        for img in 1...8{
+            catsImgs.append(Images(image: UIImage(named: "cat\(img)")))
+        }
+        for img in 1...8{
+            mealImgs.append(Images(image: UIImage(named: "m\(img)")))
+        }
+        for img in 1...6{
+            natureImgs.append(Images(image: UIImage(named: "n\(img)")))
+        }
         return [
-            [Images(image: UIImage(named: "c1")), Images(image: UIImage(named: "c2")), Images(image: UIImage(named: "c3")), Images(image: UIImage(named: "c4")), Images(image: UIImage(named: "c5")), Images(image: UIImage(named: "c6"))]
+            [Images(image: UIImage(named: "c1")), Images(image: UIImage(named: "c2")), Images(image: UIImage(named: "c3")), Images(image: UIImage(named: "c4")), Images(image: UIImage(named: "c5")), Images(image: UIImage(named: "c6"))],
+            catsImgs, mealImgs, natureImgs
         ]
     }
 }
@@ -24,26 +37,18 @@ class AlbumTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        let flowLayout = UICollectionViewFlowLayout()
-//        flowLayout.scrollDirection = .horizontal
-//        flowLayout.itemSize = CGSize(width: 80.0, height: 80.0)
-//        flowLayout.minimumInteritemSpacing = 1.0
-//        imagesCollectionView.collectionViewLayout = flowLayout
-//        imagesCollectionView.dataSource = self
     }
-
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        imagesCollectionView.delegate = self
+        imagesCollectionView.dataSource = self
     }
-           let images = ImagesContainer.images()
+    let images = ImagesContainer.images()
 }
 extension AlbumTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource{
-    func setupDataSource(){
-        self.imagesCollectionView.reloadData()
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return images.count
     }
-    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return images[section].count
     }
@@ -54,5 +59,6 @@ extension AlbumTableViewCell: UICollectionViewDelegate, UICollectionViewDataSour
         cell.contentImageView?.image = image.image
         return cell
     }
+    
 }
 
