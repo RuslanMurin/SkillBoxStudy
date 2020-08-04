@@ -12,7 +12,7 @@ protocol CustomSegmentControlDelegate: NSObjectProtocol {
     func buttonPressed(_ customView: CustomSegmentControl)
 }
 
-//@IBDesignable
+@IBDesignable
 class CustomSegmentControl: UIView {
     @IBOutlet weak var firstButton: UIButton!
     @IBOutlet weak var secondButton: UIButton!

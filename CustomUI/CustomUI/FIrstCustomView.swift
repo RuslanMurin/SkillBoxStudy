@@ -8,7 +8,7 @@
 
 import UIKit
 
-//@IBDesignable
+@IBDesignable
 class FIrstCustomView: UIView {
     
     var isSetuped = false
@@ -25,7 +25,7 @@ class FIrstCustomView: UIView {
         
         if isSetuped { return }
         isSetuped = true
-        
+       
     }
     
     func setupButton(multiplier: CGFloat, color: UIColor, indent: CGFloat){
@@ -38,5 +38,10 @@ class FIrstCustomView: UIView {
         button.frame = CGRect(x: indent, y: indent, width: buttonWidth, height: buttonHeight)
         button.setTitle("Test Button", for: .normal)
         addSubview(button)
+    }
+    override func prepareForInterfaceBuilder() {
+        roundingMultiplier = 2.3
+        indentSize = 5
+        button.backgroundColor = buttonColor
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -34,30 +34,22 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CEl-xt-42Y" customClass="ClockView" customModule="CustomUI" customModuleProvider="target">
-                                <rect key="frame" x="82" y="160" width="250" height="250"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="piG-EO-fbo" customClass="ClockView" customModule="CustomUI" customModuleProvider="target">
+                                <rect key="frame" x="87" y="160" width="240" height="240"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="CEl-xt-42Y" secondAttribute="height" multiplier="1:1" id="oV8-y1-3mx"/>
+                                    <constraint firstAttribute="width" constant="240" id="Z5c-vY-DE6"/>
+                                    <constraint firstAttribute="height" constant="240" id="chn-t4-nUy"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="hourLineHeight">
-                                        <real key="value" value="40"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="hourTime">
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="hourLineColor">
-                                        <color key="value" systemColor="systemRedColor" red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="minuteTime">
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="minuteLineColor">
-                                        <color key="value" systemColor="linkColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="secondLineColor">
-                                        <color key="value" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="secondLineHeight">
-                                        <real key="value" value="100"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="minuteLineHeight">
-                                        <real key="value" value="86"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="secondTime">
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -65,9 +57,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="LIh-0t-Mus" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="CVE-zQ-oL3"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CEl-xt-42Y" secondAttribute="bottom" constant="452" id="CeM-9s-jzU"/>
-                            <constraint firstItem="CEl-xt-42Y" firstAttribute="top" secondItem="LIh-0t-Mus" secondAttribute="bottom" constant="50" id="DTW-xP-0By"/>
-                            <constraint firstItem="CEl-xt-42Y" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="TGD-EV-kYc"/>
+                            <constraint firstItem="piG-EO-fbo" firstAttribute="top" secondItem="LIh-0t-Mus" secondAttribute="bottom" constant="50" id="Ptj-Wt-3cM"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="piG-EO-fbo" secondAttribute="trailing" constant="87" id="eCy-vO-7CV"/>
+                            <constraint firstItem="piG-EO-fbo" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="oy8-wv-Z2w"/>
                             <constraint firstItem="LIh-0t-Mus" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="vvO-0s-bkV"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

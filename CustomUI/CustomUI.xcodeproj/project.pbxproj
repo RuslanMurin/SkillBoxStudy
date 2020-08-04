@@ -15,6 +15,7 @@
 		C360B28D2494F068000CCB9B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C360B28B2494F068000CCB9B /* LaunchScreen.storyboard */; };
 		C360B2952497F853000CCB9B /* FIrstCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C360B2942497F853000CCB9B /* FIrstCustomView.swift */; };
 		C360B29724990B77000CCB9B /* ClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C360B29624990B77000CCB9B /* ClockView.swift */; };
+		C383C0D724BF7E22004EA0C6 /* Marker.swift in Sources */ = {isa = PBXBuildFile; fileRef = C383C0D624BF7E22004EA0C6 /* Marker.swift */; };
 		C3B5BACB249FC7120014F5FE /* CustomSegmentControl.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3B5BACA249FC7120014F5FE /* CustomSegmentControl.xib */; };
 		C3B5BACD249FC7A00014F5FE /* CustomSegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B5BACC249FC7A00014F5FE /* CustomSegmentControl.swift */; };
 /* End PBXBuildFile section */
@@ -30,6 +31,7 @@
 		C360B28E2494F068000CCB9B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C360B2942497F853000CCB9B /* FIrstCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrstCustomView.swift; sourceTree = "<group>"; };
 		C360B29624990B77000CCB9B /* ClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClockView.swift; sourceTree = "<group>"; };
+		C383C0D624BF7E22004EA0C6 /* Marker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marker.swift; sourceTree = "<group>"; };
 		C3B5BACA249FC7120014F5FE /* CustomSegmentControl.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomSegmentControl.xib; sourceTree = "<group>"; };
 		C3B5BACC249FC7A00014F5FE /* CustomSegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentControl.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +71,7 @@
 				C360B2842494F061000CCB9B /* ViewController.swift */,
 				C360B2942497F853000CCB9B /* FIrstCustomView.swift */,
 				C360B29624990B77000CCB9B /* ClockView.swift */,
+				C383C0D624BF7E22004EA0C6 /* Marker.swift */,
 				C3B5BACC249FC7A00014F5FE /* CustomSegmentControl.swift */,
 				C3B5BACA249FC7120014F5FE /* CustomSegmentControl.xib */,
 				C360B2862494F061000CCB9B /* Main.storyboard */,
@@ -157,6 +160,7 @@
 				C360B2812494F061000CCB9B /* AppDelegate.swift in Sources */,
 				C360B2952497F853000CCB9B /* FIrstCustomView.swift in Sources */,
 				C360B2832494F061000CCB9B /* SceneDelegate.swift in Sources */,
+				C383C0D724BF7E22004EA0C6 /* Marker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,7 +236,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -286,7 +290,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -311,7 +315,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rslnmurin.CustomUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -330,7 +334,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.rslnmurin.CustomUI;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

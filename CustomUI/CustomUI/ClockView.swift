@@ -8,90 +8,103 @@
 
 import UIKit
 
-//@IBDesignable
+@IBDesignable
 class ClockView: UIView {
     var isSetuped = false
     
-    @IBInspectable var hourLineHeight: CGFloat = 40
+    @IBInspectable public var hourLineHeight: CGFloat = 40
     @IBInspectable var minuteLineHeight: CGFloat = 86
     @IBInspectable var secondLineHeight: CGFloat = 100
-    @IBInspectable var hourLineColor: UIColor = .red
-    @IBInspectable var minuteLineColor: UIColor = .blue
-    @IBInspectable var secondLineColor: UIColor = .green
+    @IBInspectable var hourLineColor: UIColor = .yellow{
+        didSet { hourLine.backgroundColor = hourLineColor}
+    }
+    @IBInspectable var minuteLineColor: UIColor = .darkGray{
+        didSet{ minuteLine.backgroundColor = minuteLineColor}
+    }
+    @IBInspectable var secondLineColor: UIColor = .black{
+        didSet { secondLine.backgroundColor = secondLineColor}
+    }
+    @IBInspectable var hourTime: CGFloat = 0
+    @IBInspectable var minuteTime: CGFloat = 0
+    @IBInspectable var secondTime : CGFloat = 0
     
-    private let topMarker = UIView()
-    private let righrMarker = UIView()
-    private let bottomMarker = UIView()
-    private let leftMarker = UIView()
+    let hourLine = Marker(backgroundColor: .red)
+    let minuteLine = Marker(backgroundColor: .blue)
+    let secondLine = Marker(backgroundColor: .green)
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        layer.cornerRadius = layer.frame.width / 2
         
+        customizeView()
         let w = layer.frame.width
         let h = layer.frame.height
-        let markerWidth: CGFloat = layer.frame.width / 36
-        let markerHeight: CGFloat = layer.frame.height / 8
         
+        hourLine.frame = CGRect(x: w / 2 - (hourLineHeight / 10), y: h / 2 - hourLineHeight / 2, width: hourLineHeight / 5, height: hourLineHeight)
+        minuteLine.frame = CGRect(x: w / 2 - (minuteLineHeight / 28), y: h / 2 - minuteLineHeight / 2, width: minuteLineHeight / 14, height: minuteLineHeight)
+        secondLine.frame = CGRect(x: w / 2 - (secondLineHeight / 50), y: h / 2 - secondLineHeight / 2, width: secondLineHeight / 25, height: secondLineHeight)
         
-        topMarker.frame = CGRect(x: w / 2 - markerWidth / 2, y: 0, width: markerWidth, height: markerHeight)
-        righrMarker.frame = CGRect(x: w - markerHeight, y: h / 2 - markerWidth / 2, width: markerHeight, height: markerWidth)
-        bottomMarker.frame = CGRect(x: w / 2 - markerWidth / 2, y: h - markerHeight, width: markerWidth, height: markerHeight)
-        leftMarker.frame = CGRect(x: 0, y: h / 2 - markerWidth / 2, width: markerHeight, height: markerWidth)
-        
-        for marker in [topMarker, righrMarker, bottomMarker, leftMarker]{
-            marker.backgroundColor = .black
-            addSubview(marker)
+        for line in [secondLine, minuteLine, hourLine]{
+            line.layer.anchorPoint = CGPoint(x: 0.5, y: 0)
+            addSubview(line)
         }
-        setLines()
+
+        updateHours()
+        updateMinutes()
+        updateSeconds()
+        
         if isSetuped { return }
         isSetuped = true
     }
-    
-    func setLines(){
-        let w = layer.frame.width
-        let h = layer.frame.height
-        
-        let hourLine = UIView()
-        let minuteLine = UIView()
-        let secondLine = UIView()
-        
-        hourLine.backgroundColor = hourLineColor
-        minuteLine.backgroundColor = minuteLineColor
-        secondLine.backgroundColor = secondLineColor
-        
-        
-        hourLine.frame = CGRect(x: w / 2 - (hourLineHeight / 10), y: h / 2 - (hourLineHeight / 10), width: hourLineHeight / 5, height: hourLineHeight)
-        minuteLine.frame = CGRect(x: w / 2 - (minuteLineHeight / 24), y: h / 2 - (minuteLineHeight / 24), width: minuteLineHeight / 14, height: minuteLineHeight)
-        secondLine.frame = CGRect(x: w / 2 - (secondLineHeight / 50), y: h / 2 - (secondLineHeight / 50), width: secondLineHeight / 25, height: secondLineHeight)
-        
-        for line in [secondLine, minuteLine, hourLine]{
-            line.layer.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-            addSubview(line)
-        }
-        
+    func updateHours(){
+        let hourAngle = CGFloat.pi * 2 * ((hourTime + 6) / CGFloat(12))
+        hourLine.transform = CGAffineTransform(rotationAngle: hourAngle)
+    }
+    func updateMinutes(){
+        let minAngle = CGFloat.pi * 2 * ((minuteTime + 30) / CGFloat(60))
+        minuteLine.transform = CGAffineTransform(rotationAngle: minAngle)
+    }
+    func updateSeconds(){
+        let secAngle = CGFloat.pi * 2 * ((secondTime + 30) / CGFloat(60))
+        secondLine.transform = CGAffineTransform(rotationAngle: secAngle)
     }
     
-    
-    
-    
-    
+    func customizeView(){
+        self.backgroundColor = . systemGray
+        layer.cornerRadius = layer.frame.width / 2
+        setClock()
+    }
     
     func setClock(){
+        let hourMarkerWidth: CGFloat = layer.frame.width / 36
+        let hourMarkerHeight: CGFloat = layer.frame.height / 8
+        let minuteMarkerWidth: CGFloat = layer.frame.width / 72
+        let minuteMarkerHeight: CGFloat = layer.frame.height / 16
         
-        for number in 1...12 {
-            let angle = CGFloat.pi * 2 * (CGFloat(number) / CGFloat(6))
-            let marker1 = UIView()
-            let marker2 = UIView()
-            
-            marker1.transform = CGAffineTransform(rotationAngle: angle)
-            marker2.transform = CGAffineTransform(rotationAngle: angle)
-            marker1.backgroundColor = .red
-            marker2.backgroundColor = .black
-            addSubview(marker1)
-            addSubview(marker2)
-            print(angle)
+        for number in 1...60 {
+            let angle = CGFloat.pi * 2 * (CGFloat(number) / CGFloat(60))
+            let marker = Marker(backgroundColor: .black)
+            marker.frame = CGRect(
+                x:(layer.frame.width / 2 - minuteMarkerWidth / 2) + (layer.frame.width / 2 - minuteMarkerHeight / 2) * sin(angle),
+                y: (layer.frame.height / 2 - minuteMarkerHeight / 2) + (layer.frame.height / 2 - minuteMarkerHeight / 2) * cos(angle),
+                width: minuteMarkerWidth, height: minuteMarkerHeight)
+            marker.transform = CGAffineTransform(rotationAngle: -angle)
+            addSubview(marker)
         }
-        
+        for number in 1...12 {
+            let angle = CGFloat.pi * 2 * (CGFloat(number) / CGFloat(12))
+            let marker = Marker(backgroundColor: .yellow)
+            marker.frame =  CGRect(
+                x:(layer.frame.width / 2 - hourMarkerWidth / 2) + (layer.frame.width / 2 - hourMarkerHeight / 2) * sin(angle),
+                y: (layer.frame.height / 2 - hourMarkerHeight / 2) + (layer.frame.height / 2 - hourMarkerHeight / 2) * cos(angle),
+                width: hourMarkerWidth, height: hourMarkerHeight)
+            marker.transform = CGAffineTransform(rotationAngle: -angle)
+            addSubview(marker)
+        }
+    }
+    
+    override func prepareForInterfaceBuilder() {
+        secondLine.backgroundColor = secondLineColor
+        minuteLine.backgroundColor = minuteLineColor
+        hourLine.backgroundColor = hourLineColor
     }
 }
