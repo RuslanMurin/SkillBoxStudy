@@ -7,27 +7,15 @@
 //
 
 import UIKit
-struct Images{
-    var image: UIImage?
-}
 
 class ImagesContainer{
-    static func images() -> [[Images]]{
-        var catsImgs: [Images] = []
-        var mealImgs: [Images] = []
-        var natureImgs: [Images] = []
-        for img in 1...8{
-            catsImgs.append(Images(image: UIImage(named: "cat\(img)")))
-        }
-        for img in 1...8{
-            mealImgs.append(Images(image: UIImage(named: "m\(img)")))
-        }
-        for img in 1...6{
-            natureImgs.append(Images(image: UIImage(named: "n\(img)")))
-        }
+    
+    static func images() -> [[UIImage?]]{
         return [
-            [Images(image: UIImage(named: "c1")), Images(image: UIImage(named: "c2")), Images(image: UIImage(named: "c3")), Images(image: UIImage(named: "c4")), Images(image: UIImage(named: "c5")), Images(image: UIImage(named: "c6"))],
-            catsImgs, mealImgs, natureImgs
+            (1...6).map { UIImage(named: "c\($0)") },
+            (1...8).map { UIImage(named: "cat\($0)") },
+            (1...8).map { UIImage(named: "m\($0)") },
+            (1...6).map { UIImage(named: "n\($0)") }
         ]
     }
 }
@@ -37,28 +25,31 @@ class AlbumTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-    }
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
         imagesCollectionView.delegate = self
         imagesCollectionView.dataSource = self
     }
-    let images = ImagesContainer.images()
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+    }
+    
+    var sendedIndex = 0
+    
 }
+
 extension AlbumTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return images.count
+        return 1
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return images[section].count
+        return ImagesContainer.images()[sendedIndex].count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCollectionViewCell
-        let image = images[indexPath.section][indexPath.row]
-        cell.contentImageView?.image = image.image
+        let image = ImagesContainer.images()[sendedIndex][indexPath.row]
+        cell.contentImageView?.image = image
         return cell
     }
-    
 }
-

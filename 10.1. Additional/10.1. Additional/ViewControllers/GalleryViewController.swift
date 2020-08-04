@@ -7,29 +7,29 @@
 //
 
 import UIKit
-struct Albums{
-    var albumNames: String
-}
+
 
 class AlbumsContainer {
-    static func albumsNames() -> [Albums]{
-        return [Albums(albumNames: "cities"), Albums(albumNames: "cats"), Albums(albumNames: "meal"), Albums(albumNames: "nature")]
+    static func albumsNames() -> [String]{
+        return ["cities", "cats", "meal", "nature"]
     }
 }
 
-class GalleryViewController: UIViewController {
+class GalleryViewController: UIViewController{
     @IBOutlet weak var albumTableView: UITableView!
+    let albumView = AlbumTableViewCell()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         albumTableView.delegate = self
         albumTableView.dataSource = self
     }
-    let albums = AlbumsContainer.albumsNames()
 }
 
 extension GalleryViewController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return albums.count
+        return AlbumsContainer.albumsNames().count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,6 +38,7 @@ extension GalleryViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumCell") as! AlbumTableViewCell
+        cell.sendedIndex = indexPath.section
         return cell
     }
     
@@ -45,7 +46,7 @@ extension GalleryViewController: UITableViewDelegate, UITableViewDataSource{
         return 180.0
     }
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return albums[section].albumNames
+        return AlbumsContainer.albumsNames()[section].self
     }
 }
 
