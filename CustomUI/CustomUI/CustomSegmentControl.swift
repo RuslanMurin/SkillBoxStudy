@@ -14,9 +14,12 @@ protocol CustomSegmentControlDelegate: NSObjectProtocol {
 
 @IBDesignable
 class CustomSegmentControl: UIView {
+    
     @IBOutlet weak var firstButton: UIButton!
     @IBOutlet weak var secondButton: UIButton!
-    @IBOutlet weak var substrateView: UIView!
+    @IBOutlet weak var substrateView: UIView!{
+        didSet{ self.backgroundColor = substrateColor}
+    }
     
     @IBInspectable var substrateColor: UIColor = .systemGray
     @IBInspectable var firstButtonTitle: String = "1"
@@ -28,10 +31,8 @@ class CustomSegmentControl: UIView {
         super.layoutSubviews()
         substrateView.frame = CGRect(x: 5, y: 5, width: (layer.frame.width - 15) / 2, height: layer.frame.height - 10)
         firstButton.isSelected = true
-        substrateView.backgroundColor = substrateColor
         firstButton.setTitle(firstButtonTitle, for: .normal)
         secondButton.setTitle(secondButtonTitle, for: .normal)
-        
     }
     
     func animate(_ sender: UIButton){
@@ -45,7 +46,6 @@ class CustomSegmentControl: UIView {
                 }
             }
         }
-        else{ return }
     }
     
     @IBAction func firstButtonPressed(_ sender: UIButton) {
@@ -56,8 +56,6 @@ class CustomSegmentControl: UIView {
             self.secondButton.isSelected.toggle()
             self.firstButton.isSelected.toggle()
         }
-        else{ return }
-        
     }
     
     @IBAction func secondButtonPressed(_ sender: UIButton) {
@@ -68,7 +66,6 @@ class CustomSegmentControl: UIView {
             self.firstButton.isSelected.toggle()
             self.secondButton.isSelected.toggle()
         }
-        else{ return }
     }
     
     static func loadFromNIB() -> CustomSegmentControl{

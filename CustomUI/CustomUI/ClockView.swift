@@ -10,7 +10,6 @@ import UIKit
 
 @IBDesignable
 class ClockView: UIView {
-    var isSetuped = false
     
     @IBInspectable public var hourLineHeight: CGFloat = 40
     @IBInspectable var minuteLineHeight: CGFloat = 86
@@ -24,18 +23,41 @@ class ClockView: UIView {
     @IBInspectable var secondLineColor: UIColor = .black{
         didSet { secondLine.backgroundColor = secondLineColor}
     }
-    @IBInspectable var hourTime: CGFloat = 0
-    @IBInspectable var minuteTime: CGFloat = 0
-    @IBInspectable var secondTime : CGFloat = 0
+    @IBInspectable var hourTime: CGFloat = 0{
+        didSet{ layoutSubviews() }
+    }
+    @IBInspectable var minuteTime: CGFloat = 0{
+        didSet{ updateMinutes() }
+    }
+    @IBInspectable var secondTime : CGFloat = 0{
+        didSet{ updateSeconds() }
+    }
     
-    let hourLine = Marker(backgroundColor: .red)
-    let minuteLine = Marker(backgroundColor: .blue)
-    let secondLine = Marker(backgroundColor: .green)
+    var hourLine = Marker()
+    let minuteLine = Marker()
+    let secondLine = Marker()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .systemGray
+        setClock()
+        updateHours()
+        updateMinutes()
+        updateSeconds()
+
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        backgroundColor = .systemGray
+        setClock()
+        updateHours()
+        updateMinutes()
+        updateSeconds()
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        customizeView()
         let w = layer.frame.width
         let h = layer.frame.height
         
@@ -44,37 +66,31 @@ class ClockView: UIView {
         secondLine.frame = CGRect(x: w / 2 - (secondLineHeight / 50), y: h / 2 - secondLineHeight / 2, width: secondLineHeight / 25, height: secondLineHeight)
         
         for line in [secondLine, minuteLine, hourLine]{
-            line.layer.anchorPoint = CGPoint(x: 0.5, y: 0)
+            line.layer.anchorPoint = CGPoint(x: 0.5, y: 0) //работает только в layoutSubviews()
             addSubview(line)
         }
-
-        updateHours()
-        updateMinutes()
-        updateSeconds()
-        
-        if isSetuped { return }
-        isSetuped = true
     }
+    
     func updateHours(){
-        let hourAngle = CGFloat.pi * 2 * ((hourTime + 6) / CGFloat(12))
+        let hourAngle = CGFloat.pi * 2 * (hourTime + 6) / CGFloat(12)
         hourLine.transform = CGAffineTransform(rotationAngle: hourAngle)
+        
     }
     func updateMinutes(){
         let minAngle = CGFloat.pi * 2 * ((minuteTime + 30) / CGFloat(60))
         minuteLine.transform = CGAffineTransform(rotationAngle: minAngle)
+
     }
     func updateSeconds(){
         let secAngle = CGFloat.pi * 2 * ((secondTime + 30) / CGFloat(60))
         secondLine.transform = CGAffineTransform(rotationAngle: secAngle)
-    }
-    
-    func customizeView(){
-        self.backgroundColor = . systemGray
-        layer.cornerRadius = layer.frame.width / 2
-        setClock()
+
     }
     
     func setClock(){
+        
+        layer.cornerRadius = layer.frame.width / 2
+        
         let hourMarkerWidth: CGFloat = layer.frame.width / 36
         let hourMarkerHeight: CGFloat = layer.frame.height / 8
         let minuteMarkerWidth: CGFloat = layer.frame.width / 72

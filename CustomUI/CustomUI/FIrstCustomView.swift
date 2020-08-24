@@ -11,21 +11,22 @@ import UIKit
 @IBDesignable
 class FIrstCustomView: UIView {
     
-    var isSetuped = false
     private let button = UIButton()
     
     @IBInspectable var roundingMultiplier: CGFloat = 1.0
     @IBInspectable var indentSize: CGFloat = 5
     @IBInspectable var buttonColor: UIColor = .red
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupButton(multiplier: roundingMultiplier, color: buttonColor, indent: indentSize)
+    }
     
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setupButton(multiplier: roundingMultiplier, color: buttonColor, indent: indentSize)
+    }
     override func layoutSubviews() {
         super.layoutSubviews()
-        
-        setupButton(multiplier: roundingMultiplier, color: buttonColor, indent: indentSize)
-        
-        if isSetuped { return }
-        isSetuped = true
-       
     }
     
     func setupButton(multiplier: CGFloat, color: UIColor, indent: CGFloat){

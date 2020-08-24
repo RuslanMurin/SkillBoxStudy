@@ -12,6 +12,8 @@ class Marker: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        backgroundColor = .yellow
+        
     }
     
     required init?(coder: NSCoder) {
@@ -21,7 +23,7 @@ class Marker: UIView {
     convenience init(backgroundColor: UIColor){
         self.init(frame: .zero)
         self.backgroundColor = backgroundColor
-
+        
     }
     
 }

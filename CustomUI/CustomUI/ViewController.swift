@@ -10,8 +10,12 @@ import UIKit
 
 class ViewController: UIViewController {
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        let clock = ClockView()
+        clock.frame = CGRect(x: view.frame.width / 2, y: view.frame.height - 250, width: 200, height: 200)
+        view.addSubview(clock)
         let customSegmentedControl = CustomSegmentControl.loadFromNIB()
         customSegmentedControl.delegate = self
         view.addSubview(customSegmentedControl)
