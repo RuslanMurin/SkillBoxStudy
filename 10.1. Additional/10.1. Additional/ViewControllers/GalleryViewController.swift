@@ -7,18 +7,22 @@
 //
 
 import UIKit
-
-
+//класс альбомов
 class AlbumsContainer {
-    static func albumsNames() -> [String]{
-        return ["cities", "cats", "meal", "nature"]
+    static var names: [String]{
+        return  ["cities", "cats", "meal", "nature"]
+    }
+    
+    static var images: [[UIImage?]] {
+        return [ (1...6).map { UIImage(named: "c\($0)") },
+                 (1...8).map { UIImage(named: "cat\($0)") },
+                 (1...8).map { UIImage(named: "m\($0)") },
+                 (1...6).map { UIImage(named: "n\($0)") } ]
     }
 }
-
+//VC
 class GalleryViewController: UIViewController{
     @IBOutlet weak var albumTableView: UITableView!
-    let albumView = AlbumTableViewCell()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,10 +30,10 @@ class GalleryViewController: UIViewController{
         albumTableView.dataSource = self
     }
 }
-
+//таблица
 extension GalleryViewController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return AlbumsContainer.albumsNames().count
+        return AlbumsContainer.names.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,15 +42,16 @@ extension GalleryViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumCell") as! AlbumTableViewCell
-        cell.sendedIndex = indexPath.section
+        cell.images = AlbumsContainer.images[indexPath.section]
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180.0
     }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return AlbumsContainer.albumsNames()[section].self
+        return AlbumsContainer.names[section]
     }
 }
 

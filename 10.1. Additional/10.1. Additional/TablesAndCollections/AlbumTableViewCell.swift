@@ -7,19 +7,7 @@
 //
 
 import UIKit
-
-class ImagesContainer{
-    
-    static func images() -> [[UIImage?]]{
-        return [
-            (1...6).map { UIImage(named: "c\($0)") },
-            (1...8).map { UIImage(named: "cat\($0)") },
-            (1...8).map { UIImage(named: "m\($0)") },
-            (1...6).map { UIImage(named: "n\($0)") }
-        ]
-    }
-}
-
+//Ячейка таблицы
 class AlbumTableViewCell: UITableViewCell {
     @IBOutlet weak var imagesCollectionView: UICollectionView!
     
@@ -33,23 +21,22 @@ class AlbumTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
-    var sendedIndex = 0
+    var images: [UIImage?] = []
     
 }
-
+//Коллекция
 extension AlbumTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource{
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return ImagesContainer.images()[sendedIndex].count
+        return images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ImageCell", for: indexPath) as! ImageCollectionViewCell
-        let image = ImagesContainer.images()[sendedIndex][indexPath.row]
-        cell.contentImageView?.image = image
+        cell.contentImageView?.image = images[indexPath.row]
         return cell
     }
 }
