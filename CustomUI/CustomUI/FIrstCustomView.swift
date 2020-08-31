@@ -13,33 +13,42 @@ class FIrstCustomView: UIView {
     
     private let button = UIButton()
     
-    @IBInspectable var roundingMultiplier: CGFloat = 1.0
+    @IBInspectable var roundingMultiplier: CGFloat = 2.3{
+        didSet{layoutIfNeeded()}
+    }
     @IBInspectable var indentSize: CGFloat = 5
-    @IBInspectable var buttonColor: UIColor = .red
+    @IBInspectable var buttonColor: UIColor = .red{
+        didSet{ button.backgroundColor = buttonColor }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setupButton(multiplier: roundingMultiplier, color: buttonColor, indent: indentSize)
+        setupButton()
+        
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        setupButton(multiplier: roundingMultiplier, color: buttonColor, indent: indentSize)
-    }
-    override func layoutSubviews() {
-        super.layoutSubviews()
+        setupButton()
     }
     
-    func setupButton(multiplier: CGFloat, color: UIColor, indent: CGFloat){
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
         let buttonWidth = frame.width - indentSize * 2
         let buttonHeight = frame.height - indentSize * 2
         
-        layer.cornerRadius = frame.height / (1 * multiplier) + indentSize
-        button.layer.cornerRadius = frame.height / (1 * multiplier)
-        button.backgroundColor = color
-        button.frame = CGRect(x: indent, y: indent, width: buttonWidth, height: buttonHeight)
+        button.frame = CGRect(x: indentSize, y: indentSize, width: buttonWidth, height: buttonHeight)
+        button.layer.cornerRadius = frame.height / roundingMultiplier
+        layer.cornerRadius = frame.height /  roundingMultiplier + indentSize
+
+    }
+    
+    func setupButton(){
         button.setTitle("Test Button", for: .normal)
         addSubview(button)
     }
+    
     override func prepareForInterfaceBuilder() {
         roundingMultiplier = 2.3
         indentSize = 5
