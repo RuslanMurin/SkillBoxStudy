@@ -8,6 +8,11 @@
 
 import UIKit
 //класс альбомов
+struct Album {
+    let name: String
+    let images: [UIImage?]
+}
+
 class AlbumsContainer {
     static var names: [String]{
         return  ["cities", "cats", "meal", "nature"]
@@ -24,6 +29,11 @@ class AlbumsContainer {
 class GalleryViewController: UIViewController{
     @IBOutlet weak var albumTableView: UITableView!
     
+    let albums = [Album(name: AlbumsContainer.names[0], images: AlbumsContainer.images[0]),
+                  Album(name: AlbumsContainer.names[1], images: AlbumsContainer.images[1]),
+                  Album(name: AlbumsContainer.names[2], images: AlbumsContainer.images[2]),
+                  Album(name: AlbumsContainer.names[3], images: AlbumsContainer.images[3])]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         albumTableView.delegate = self
@@ -33,7 +43,7 @@ class GalleryViewController: UIViewController{
 //таблица
 extension GalleryViewController: UITableViewDelegate, UITableViewDataSource{
     func numberOfSections(in tableView: UITableView) -> Int {
-        return AlbumsContainer.names.count
+        return albums.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -42,7 +52,7 @@ extension GalleryViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AlbumCell") as! AlbumTableViewCell
-        cell.images = AlbumsContainer.images[indexPath.section]
+        cell.images = albums[indexPath.section].images
         return cell
     }
     
@@ -51,7 +61,7 @@ extension GalleryViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return AlbumsContainer.names[section]
+        return albums[section].name
     }
 }
 
