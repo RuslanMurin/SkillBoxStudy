@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomSegmentControl" customModule="CustomUI" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="35"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ekf-rd-cgu">
+                    <rect key="frame" x="5" y="3" width="70" height="27"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <color key="backgroundColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
+                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="IE5-2P-A8i">
+                    <rect key="frame" x="5" y="5" width="153" height="25"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5iL-Hk-JXg">
+                            <rect key="frame" x="0.0" y="0.0" width="74" height="25"/>
+                            <state key="normal">
+                                <attributedString key="attributedTitle">
+                                    <fragment content="1">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                            </state>
+                            <connections>
+                                <action selector="firstButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="wh4-Of-leu"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8Dr-CY-FZb">
+                            <rect key="frame" x="79" y="0.0" width="74" height="25"/>
+                            <state key="normal">
+                                <attributedString key="attributedTitle">
+                                    <fragment content="2">
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                            </state>
+                            <connections>
+                                <action selector="secondButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="j6W-sM-DCz"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="IE5-2P-A8i" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="Hox-SC-ZD3"/>
+                <constraint firstAttribute="trailing" secondItem="IE5-2P-A8i" secondAttribute="trailing" constant="5" id="LGa-mb-f9b"/>
+                <constraint firstItem="IE5-2P-A8i" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="fph-dE-Kj3"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="IE5-2P-A8i" secondAttribute="bottom" constant="5" id="rnU-ht-DVm"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="firstButton" destination="5iL-Hk-JXg" id="CEI-UJ-eOS"/>
+                <outlet property="secondButton" destination="8Dr-CY-FZb" id="Av7-TC-ZDb"/>
+                <outlet property="substrateView" destination="Ekf-rd-cgu" id="QSw-nH-eHi"/>
+            </connections>
+            <point key="canvasLocation" x="-50.000000000000007" y="-106.80803571428571"/>
+        </view>
+    </objects>
+</document>
