@@ -13,27 +13,13 @@ struct Album {
     let images: [UIImage?]
 }
 
-class AlbumsContainer {
-    static var names: [String]{
-        return  ["cities", "cats", "meal", "nature"]
-    }
-    
-    static var images: [[UIImage?]] {
-        return [ (1...6).map { UIImage(named: "c\($0)") },
-                 (1...8).map { UIImage(named: "cat\($0)") },
-                 (1...8).map { UIImage(named: "m\($0)") },
-                 (1...6).map { UIImage(named: "n\($0)") } ]
-    }
-}
-//VC
 class GalleryViewController: UIViewController{
     @IBOutlet weak var albumTableView: UITableView!
-    
-    let albums = [Album(name: AlbumsContainer.names[0], images: AlbumsContainer.images[0]),
-                  Album(name: AlbumsContainer.names[1], images: AlbumsContainer.images[1]),
-                  Album(name: AlbumsContainer.names[2], images: AlbumsContainer.images[2]),
-                  Album(name: AlbumsContainer.names[3], images: AlbumsContainer.images[3])]
-    
+    let albums = [Album(name: "cities", images: (1...6).map { UIImage(named: "c\($0)") }),
+    Album(name: "cats", images: (1...6).map { UIImage(named: "cat\($0)") }),
+    Album(name: "meal", images: (1...6).map { UIImage(named: "m\($0)") }),
+    Album(name: "nature", images: (1...6).map { UIImage(named: "n\($0)") })]
+
     override func viewDidLoad() {
         super.viewDidLoad()
         albumTableView.delegate = self
