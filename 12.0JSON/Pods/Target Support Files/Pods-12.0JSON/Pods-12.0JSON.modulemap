@@ -1,0 +1,6 @@
+framework module Pods_12_0JSON {
+  umbrella header "Pods-12.0JSON-umbrella.h"
+
+  export *
+  module * { export * }
+}
