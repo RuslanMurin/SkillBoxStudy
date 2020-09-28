@@ -6,32 +6,25 @@ class PasswordTextField: UIView {
     
     var symbolsCount = 0
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-    }
-    
     override func draw(_ rect: CGRect) {
         var fillColor: UIColor
         var pathLenght: CGFloat
         
-        switch self.symbolsCount {
-        case 0...5:
-            fillColor = .red
-            pathLenght = self.layer.frame.width / 4
-        case 6...10:
-            fillColor = .orange
-            pathLenght = self.layer.frame.width / 2
-        case 11...:
-            fillColor = .systemGreen
-            pathLenght = self.layer.frame.width
-        default:
-            fillColor = .red
-            pathLenght = self.layer.frame.width / 4
-        }
-        
+            switch self.symbolsCount {
+            case 0...5:
+                fillColor = .red
+                pathLenght = self.layer.frame.width / 4
+            case 6...10:
+                fillColor = .orange
+                pathLenght = self.layer.frame.width / 2
+            case 11...:
+                fillColor = .systemGreen
+                pathLenght = self.layer.frame.width
+            default:
+                fillColor = .red
+                pathLenght = self.layer.frame.width / 4
+            }
+
         let pathRect = CGRect(x: 0, y: textField.frame.height + 5, width: self.frame.width, height: 10)
         let path = UIBezierPath(rect: pathRect)
         let color: UIColor = .lightGray

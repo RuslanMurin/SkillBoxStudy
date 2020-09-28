@@ -40,6 +40,13 @@ class BatteryIndicator: UIView {
         let color: UIColor = pathColor
         color.setFill()
         path.fill()
+        
+        batteryBezier.move(to: CGPoint(x: self.frame.width - 10, y: 2))
+        batteryBezier.addLine(to: CGPoint(x: self.frame.width - 10, y: self.frame.height / 2 - 10))
+        batteryBezier.addLine(to: CGPoint(x: self.frame.width - 2, y: self.frame.height / 2 - 10))
+        batteryBezier.addLine(to: CGPoint(x: self.frame.width - 2, y: self.frame.height / 2 + 10))
+        batteryBezier.addLine(to: CGPoint(x: self.frame.width - 10, y: self.frame.height / 2 + 10))
+        batteryBezier.stroke()
 
     }
 }
