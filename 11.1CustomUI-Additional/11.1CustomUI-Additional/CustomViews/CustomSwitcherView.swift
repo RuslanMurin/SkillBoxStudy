@@ -14,30 +14,21 @@ class CustomSwitcherView: UIView {
         return CGSize(width: 120, height: 40)
     }
     
-    override init(frame: CGRect) {
-        super.init(frame: CGRect(x: .zero, y: .zero, width: 120, height: 40))
-        layer.cornerRadius = 20
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        frame = CGRect(x: .zero, y: .zero, width: 120, height: 40)
-        layer.cornerRadius = 20
-        
+    override func awakeFromNib() {
+        self.layer.cornerRadius = 20
+        switcherButton.layer.cornerRadius = 15
     }
     
     var isSelected: Bool = false
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        switcherButton.layer.cornerRadius = 15
-    }
     
     @IBAction func buttonPressed(_ sender: UIButton) {
         
         UIView.animate(withDuration: 0.5) {
             self.leadingConstraint.isActive.toggle()
             self.trailingConstraint.isActive.toggle()
+            UIView.animate(withDuration: 0.5) {
+                self.layoutIfNeeded()
+            }
             if self.isSelected == false {
                 self.backgroundColor = .systemIndigo
                 self.switcherButton.backgroundColor = .systemGreen

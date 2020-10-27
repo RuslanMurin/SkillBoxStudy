@@ -11,7 +11,10 @@ class PasswordTextField: UIView {
         var pathLenght: CGFloat
         
             switch self.symbolsCount {
-            case 0...5:
+            case 0:
+                fillColor = .white
+                pathLenght = 0
+            case 1...5:
                 fillColor = .red
                 pathLenght = self.layer.frame.width / 4
             case 6...10:
