@@ -8,43 +8,39 @@
 
 /* Begin PBXBuildFile section */
 		3AD845D74AEF644473E7F0E6 /* Pods_12_0JSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A62F82A1AC9CD6D009D5676 /* Pods_12_0JSON.framework */; };
-		C32B387324FFA63F00704A9C /* WeeklyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32B387224FFA63F00704A9C /* WeeklyWeather.swift */; };
-		C32B38772500180600704A9C /* WeeklyLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32B38762500180600704A9C /* WeeklyLoader.swift */; };
-		C32B387C250034D700704A9C /* WeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32B387B250034D700704A9C /* WeekTableViewCell.swift */; };
+		C32F01A6254B25A300D5CBC5 /* WeeklyTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32F01A5254B25A300D5CBC5 /* WeeklyTableViewCell.swift */; };
+		C32F01A8254D83B900D5CBC5 /* WeeklyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C32F01A7254D83B900D5CBC5 /* WeeklyWeather.swift */; };
 		C3532A7A24F46979003E2945 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3532A7924F46979003E2945 /* AppDelegate.swift */; };
 		C3532A7C24F46979003E2945 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3532A7B24F46979003E2945 /* SceneDelegate.swift */; };
-		C3532A7E24F46979003E2945 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3532A7D24F46979003E2945 /* ViewController.swift */; };
 		C3532A8124F46979003E2945 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3532A7F24F46979003E2945 /* Main.storyboard */; };
 		C3532A8324F4697D003E2945 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3532A8224F4697D003E2945 /* Assets.xcassets */; };
 		C3532A8624F4697D003E2945 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3532A8424F4697D003E2945 /* LaunchScreen.storyboard */; };
-		C3532A9524FD68B0003E2945 /* WeatherLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3532A9424FD68B0003E2945 /* WeatherLoader.swift */; };
-		C3532A9724FD74E7003E2945 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3532A9624FD74E7003E2945 /* Weather.swift */; };
-		C390003A25015D0E000C22AD /* AlamofireViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C390003925015D0E000C22AD /* AlamofireViewController.swift */; };
-		C390003D25015FD9000C22AD /* AlamoWeekTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C390003C25015FD9000C22AD /* AlamoWeekTableViewCell.swift */; };
-		C390003F2501600D000C22AD /* AlamoWeatherLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C390003E2501600D000C22AD /* AlamoWeatherLoader.swift */; };
-		C3900041250166EE000C22AD /* AlamoWeeklyLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3900040250166EE000C22AD /* AlamoWeeklyLoader.swift */; };
+		C3B7B8F0254A0AB000FADFC5 /* WeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B7B8EF254A0AB000FADFC5 /* WeatherService.swift */; };
+		C3B7B8F2254A0B7000FADFC5 /* URLSessionWeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B7B8F1254A0B7000FADFC5 /* URLSessionWeatherService.swift */; };
+		C3B7B8F4254A0B8E00FADFC5 /* AlamofireWeatherService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B7B8F3254A0B8E00FADFC5 /* AlamofireWeatherService.swift */; };
+		C3B7B8F6254A104C00FADFC5 /* WeatherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B7B8F5254A104C00FADFC5 /* WeatherViewController.swift */; };
+		C3B7B8F8254A165400FADFC5 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B7B8F7254A165400FADFC5 /* MainTabBarController.swift */; };
+		C3B7B909254A281000FADFC5 /* Weather.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B7B903254A281000FADFC5 /* Weather.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		173EFBC22DE65D368C95130E /* Pods-12.0JSON.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-12.0JSON.debug.xcconfig"; path = "Target Support Files/Pods-12.0JSON/Pods-12.0JSON.debug.xcconfig"; sourceTree = "<group>"; };
 		9A62F82A1AC9CD6D009D5676 /* Pods_12_0JSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_12_0JSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C32B387224FFA63F00704A9C /* WeeklyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyWeather.swift; sourceTree = "<group>"; };
-		C32B38762500180600704A9C /* WeeklyLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyLoader.swift; sourceTree = "<group>"; };
-		C32B387B250034D700704A9C /* WeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekTableViewCell.swift; sourceTree = "<group>"; };
+		C32F01A5254B25A300D5CBC5 /* WeeklyTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeeklyTableViewCell.swift; sourceTree = "<group>"; };
+		C32F01A7254D83B900D5CBC5 /* WeeklyWeather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeeklyWeather.swift; sourceTree = "<group>"; };
 		C3532A7624F46979003E2945 /* 12.0JSON.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 12.0JSON.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3532A7924F46979003E2945 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3532A7B24F46979003E2945 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C3532A7D24F46979003E2945 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C3532A8024F46979003E2945 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C3532A8224F4697D003E2945 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C3532A8524F4697D003E2945 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C3532A8724F4697D003E2945 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C3532A9424FD68B0003E2945 /* WeatherLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherLoader.swift; sourceTree = "<group>"; };
-		C3532A9624FD74E7003E2945 /* Weather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
-		C390003925015D0E000C22AD /* AlamofireViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireViewController.swift; sourceTree = "<group>"; };
-		C390003C25015FD9000C22AD /* AlamoWeekTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamoWeekTableViewCell.swift; sourceTree = "<group>"; };
-		C390003E2501600D000C22AD /* AlamoWeatherLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamoWeatherLoader.swift; sourceTree = "<group>"; };
-		C3900040250166EE000C22AD /* AlamoWeeklyLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamoWeeklyLoader.swift; sourceTree = "<group>"; };
+		C3B7B8EF254A0AB000FADFC5 /* WeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherService.swift; sourceTree = "<group>"; };
+		C3B7B8F1254A0B7000FADFC5 /* URLSessionWeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionWeatherService.swift; sourceTree = "<group>"; };
+		C3B7B8F3254A0B8E00FADFC5 /* AlamofireWeatherService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamofireWeatherService.swift; sourceTree = "<group>"; };
+		C3B7B8F5254A104C00FADFC5 /* WeatherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewController.swift; sourceTree = "<group>"; };
+		C3B7B8F7254A165400FADFC5 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		C3B7B903254A281000FADFC5 /* Weather.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Weather.swift; sourceTree = "<group>"; };
 		CC469C85655604BDC99AC965 /* Pods-12.0JSON.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-12.0JSON.release.xcconfig"; path = "Target Support Files/Pods-12.0JSON/Pods-12.0JSON.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -77,33 +73,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C32B38782500304D00704A9C /* Loaders */ = {
+		C32F01A4254B214300D5CBC5 /* WeatherServices */ = {
 			isa = PBXGroup;
 			children = (
-				C32B387A2500307C00704A9C /* Week */,
-				C32B38792500306600704A9C /* One Day */,
+				C3B7B8EF254A0AB000FADFC5 /* WeatherService.swift */,
+				C3B7B8F1254A0B7000FADFC5 /* URLSessionWeatherService.swift */,
+				C3B7B8F3254A0B8E00FADFC5 /* AlamofireWeatherService.swift */,
 			);
-			path = Loaders;
-			sourceTree = "<group>";
-		};
-		C32B38792500306600704A9C /* One Day */ = {
-			isa = PBXGroup;
-			children = (
-				C3532A9624FD74E7003E2945 /* Weather.swift */,
-				C3532A9424FD68B0003E2945 /* WeatherLoader.swift */,
-				C390003E2501600D000C22AD /* AlamoWeatherLoader.swift */,
-			);
-			path = "One Day";
-			sourceTree = "<group>";
-		};
-		C32B387A2500307C00704A9C /* Week */ = {
-			isa = PBXGroup;
-			children = (
-				C32B387224FFA63F00704A9C /* WeeklyWeather.swift */,
-				C32B38762500180600704A9C /* WeeklyLoader.swift */,
-				C3900040250166EE000C22AD /* AlamoWeeklyLoader.swift */,
-			);
-			path = Week;
+			path = WeatherServices;
 			sourceTree = "<group>";
 		};
 		C3532A6D24F46979003E2945 = {
@@ -130,8 +107,9 @@
 				C3532A7924F46979003E2945 /* AppDelegate.swift */,
 				C3532A7B24F46979003E2945 /* SceneDelegate.swift */,
 				C3532A7F24F46979003E2945 /* Main.storyboard */,
+				C32F01A4254B214300D5CBC5 /* WeatherServices */,
+				C3B7B8FB254A281000FADFC5 /* JSON */,
 				C390003B25015D13000C22AD /* ViewControllers */,
-				C32B38782500304D00704A9C /* Loaders */,
 				C3532A8F24FD67F3003E2945 /* Tables and Collections */,
 				C3532A8224F4697D003E2945 /* Assets.xcassets */,
 				C3532A8424F4697D003E2945 /* LaunchScreen.storyboard */,
@@ -143,8 +121,7 @@
 		C3532A8F24FD67F3003E2945 /* Tables and Collections */ = {
 			isa = PBXGroup;
 			children = (
-				C32B387B250034D700704A9C /* WeekTableViewCell.swift */,
-				C390003C25015FD9000C22AD /* AlamoWeekTableViewCell.swift */,
+				C32F01A5254B25A300D5CBC5 /* WeeklyTableViewCell.swift */,
 			);
 			path = "Tables and Collections";
 			sourceTree = "<group>";
@@ -152,10 +129,19 @@
 		C390003B25015D13000C22AD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				C3532A7D24F46979003E2945 /* ViewController.swift */,
-				C390003925015D0E000C22AD /* AlamofireViewController.swift */,
+				C3B7B8F5254A104C00FADFC5 /* WeatherViewController.swift */,
+				C3B7B8F7254A165400FADFC5 /* MainTabBarController.swift */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		C3B7B8FB254A281000FADFC5 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				C32F01A7254D83B900D5CBC5 /* WeeklyWeather.swift */,
+				C3B7B903254A281000FADFC5 /* Weather.swift */,
+			);
+			path = JSON;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,18 +259,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C390003F2501600D000C22AD /* AlamoWeatherLoader.swift in Sources */,
-				C3532A7E24F46979003E2945 /* ViewController.swift in Sources */,
-				C32B387C250034D700704A9C /* WeekTableViewCell.swift in Sources */,
-				C3532A9524FD68B0003E2945 /* WeatherLoader.swift in Sources */,
+				C32F01A6254B25A300D5CBC5 /* WeeklyTableViewCell.swift in Sources */,
+				C3B7B8F6254A104C00FADFC5 /* WeatherViewController.swift in Sources */,
+				C3B7B8F4254A0B8E00FADFC5 /* AlamofireWeatherService.swift in Sources */,
+				C3B7B8F2254A0B7000FADFC5 /* URLSessionWeatherService.swift in Sources */,
+				C3B7B8F0254A0AB000FADFC5 /* WeatherService.swift in Sources */,
 				C3532A7A24F46979003E2945 /* AppDelegate.swift in Sources */,
-				C390003A25015D0E000C22AD /* AlamofireViewController.swift in Sources */,
-				C32B387324FFA63F00704A9C /* WeeklyWeather.swift in Sources */,
-				C32B38772500180600704A9C /* WeeklyLoader.swift in Sources */,
-				C3900041250166EE000C22AD /* AlamoWeeklyLoader.swift in Sources */,
+				C3B7B909254A281000FADFC5 /* Weather.swift in Sources */,
+				C3B7B8F8254A165400FADFC5 /* MainTabBarController.swift in Sources */,
 				C3532A7C24F46979003E2945 /* SceneDelegate.swift in Sources */,
-				C390003D25015FD9000C22AD /* AlamoWeekTableViewCell.swift in Sources */,
-				C3532A9724FD74E7003E2945 /* Weather.swift in Sources */,
+				C32F01A8254D83B900D5CBC5 /* WeeklyWeather.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
