@@ -3,7 +3,7 @@ import Foundation
 class WeatherPersistence {
     static let shared = WeatherPersistence()
     
-    func storeData(day: Weather){
+    func storeDayWeather(_ day: Weather){
         UserDefaults.standard.setValue(day.main.temp, forKey: "Persistence.CurrTempKey")
         UserDefaults.standard.setValue(day.weather[0].weatherDescription, forKey: "Persistence.CurrDescrKey")
         UserDefaults.standard.setValue(day.name, forKey: "Persistence.CityKey")
@@ -12,7 +12,7 @@ class WeatherPersistence {
         UserDefaults.standard.setValue(day.main.pressure, forKey: "Persistence.CurrPressure")
     }
     
-    func storeAnotherData(week: WeeklyWeather){
+    func storeWeekWeather(_ week: WeeklyWeather){
         var minTemp: [Double] = []
         var maxTemp: [Double] = []
         var descriptions: [String] = []

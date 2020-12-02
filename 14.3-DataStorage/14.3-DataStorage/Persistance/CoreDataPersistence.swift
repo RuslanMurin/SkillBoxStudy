@@ -1,41 +1,43 @@
 import Foundation
 import CoreData
 
-class CoreDataPersistence: CoreTask, Persistence {
-
+class CoreDataPersistence: Task, TaskStore {
+    
+    
+    
     var persistentContainer: NSPersistentContainer = {
         let container = NSPersistentContainer(name: "_4_3_DataStorage")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
-            if let error = error as NSError? {
-                fatalError("Unresolved error \(error), \(error.userInfo)")
-            }
-        })
+        DispatchQueue.global(qos: .utility).async {
+            container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+                if let error = error as NSError? {
+                    fatalError("Unresolved error \(error), \(error.userInfo)")
+                }
+            })
+        }
         return container
     }()
     
     let fetchRequest: NSFetchRequest<CoreTask> = CoreTask.fetchRequest()
     
     func saveContext () {
-        if persistentContainer.viewContext.hasChanges {
-              do {
-                try persistentContainer.viewContext.save()
-              } catch {
-                persistentContainer.viewContext.rollback()
-                  let nserror = error as NSError
-                  fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-              }
-          }
-      }
+        guard persistentContainer.viewContext.hasChanges else { return }
+        do {
+            try persistentContainer.viewContext.save()
+        } catch {
+            persistentContainer.viewContext.rollback()
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+    }
+    
     
     func addTask() {
-        let newTask = CoreTask(context: persistentContainer.viewContext)
-        newTask.text = "New Task"
+        _ = CoreTask(context: persistentContainer.viewContext)
         saveContext()
     }
     
     func tasksCount() -> Int {
-        let objects = try! persistentContainer.viewContext.fetch(fetchRequest)
-        return objects.count
+        return try! persistentContainer.viewContext.fetch(fetchRequest).count
     }
     
     func removeTask(withIndex: Int) {
@@ -46,24 +48,13 @@ class CoreDataPersistence: CoreTask, Persistence {
     
     func editTask(withIndex: Int, withText: String) {
         let objects = try! persistentContainer.viewContext.fetch(fetchRequest)
-        
-        for (index, task) in objects.enumerated(){
-            if index == withIndex{
-                task.text = withText
-            }
-        }
+        objects[withIndex].text = withText
         saveContext()
     }
     
     func taskText(withIndex: Int) -> String {
-        var text = ""
         let objects = try! persistentContainer.viewContext.fetch(fetchRequest)
-        
-        for (index, task) in objects.enumerated(){
-            if index == withIndex{
-                text = task.text ?? "New Task"
-            }
-        }
-        return text
+        return objects[withIndex].text ?? "New Task"
     }
+    
 }

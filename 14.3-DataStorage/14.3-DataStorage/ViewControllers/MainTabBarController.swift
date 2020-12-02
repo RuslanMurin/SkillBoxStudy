@@ -9,9 +9,13 @@ class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        realmVC.delegate = RealmPersistence()
-        coreDataVC.delegate = CoreDataPersistence()
+        weatherVC.weatherService = AlamoWeatherService()
+        realmVC.taskStore = RealmPersistence()
+        coreDataVC.taskStore = CoreDataPersistence()
         
+        let controllers = [userDefautsVC, realmVC, coreDataVC, weatherVC]
+        self.viewControllers = controllers
+
         weatherVC.title = "Weather"
         userDefautsVC.title = "UserDefaults"
         realmVC.title = "Realm"
@@ -19,13 +23,4 @@ class MainTabBarController: UITabBarController {
         
     }
     
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        weatherVC.weatherService = AlamoWeatherService()
-        
-        let controllers = [userDefautsVC, realmVC, coreDataVC, weatherVC]
-        self.viewControllers = controllers
-        
-    }
 }

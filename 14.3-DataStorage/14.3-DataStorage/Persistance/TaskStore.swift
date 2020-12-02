@@ -1,6 +1,6 @@
 import Foundation
 
-protocol Persistence {
+protocol TaskStore {
     
     func addTask()
     

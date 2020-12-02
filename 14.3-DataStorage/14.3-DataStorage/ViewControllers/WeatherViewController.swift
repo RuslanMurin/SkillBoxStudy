@@ -37,8 +37,8 @@ class WeatherViewController: UIViewController {
             
             self.weatherService?.weekLoad(completion: { week in self.week = week
                 self.mainTableView.reloadData()
-                WeatherPersistence.shared.storeData(day: weather)
-                WeatherPersistence.shared.storeAnotherData(week: week)
+                WeatherPersistence.shared.storeDayWeather(weather)
+                WeatherPersistence.shared.storeWeekWeather(week)
             })
         })
     }
@@ -58,9 +58,5 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource{
         cell.minTempLabel.text = "\(Int(week?.daily[indexPath.row].temp.min ?? 0))"
         
         return cell
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 90
     }
 }

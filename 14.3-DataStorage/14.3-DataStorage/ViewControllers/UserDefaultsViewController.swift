@@ -1,4 +1,5 @@
 import UIKit
+import Foundation
 
 class UserDefaultsViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
@@ -16,6 +17,11 @@ class UserDefaultsViewController: UIViewController {
         for name in UserDefaultsPersistence.shared.allNames ?? [] {
             print(name.description)
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        view.endEditing(true)
     }
     
     @IBAction func enterTapped(_ sender: UIButton) {

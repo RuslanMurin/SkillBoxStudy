@@ -12,7 +12,7 @@
 		C35D5A4025696582009F1655 /* WeatherPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35D5A3F25696582009F1655 /* WeatherPersistence.swift */; };
 		C3ACD42625642A03003D3222 /* RealmPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ACD42525642A03003D3222 /* RealmPersistence.swift */; };
 		C3ACD42C256438E2003D3222 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ACD42B256438E2003D3222 /* TaskTableViewCell.swift */; };
-		C3ACD437256458AB003D3222 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ACD436256458AB003D3222 /* Persistence.swift */; };
+		C3ACD437256458AB003D3222 /* TaskStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ACD436256458AB003D3222 /* TaskStore.swift */; };
 		C3B827972556E6B600D87AF8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B827962556E6B600D87AF8 /* AppDelegate.swift */; };
 		C3B827992556E6B600D87AF8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3B827982556E6B600D87AF8 /* SceneDelegate.swift */; };
 		C3B8279E2556E6B600D87AF8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C3B8279C2556E6B600D87AF8 /* Main.storyboard */; };
@@ -83,7 +83,7 @@
 		C35D5A3F25696582009F1655 /* WeatherPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPersistence.swift; sourceTree = "<group>"; };
 		C3ACD42525642A03003D3222 /* RealmPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPersistence.swift; sourceTree = "<group>"; };
 		C3ACD42B256438E2003D3222 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
-		C3ACD436256458AB003D3222 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		C3ACD436256458AB003D3222 /* TaskStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskStore.swift; sourceTree = "<group>"; };
 		C3B827932556E6B600D87AF8 /* 14.3-DataStorage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "14.3-DataStorage.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3B827962556E6B600D87AF8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C3B827982556E6B600D87AF8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -258,7 +258,7 @@
 			children = (
 				C3B828A225597FAE00D87AF8 /* UserDefaultsPersistence.swift */,
 				C3ACD42525642A03003D3222 /* RealmPersistence.swift */,
-				C3ACD436256458AB003D3222 /* Persistence.swift */,
+				C3ACD436256458AB003D3222 /* TaskStore.swift */,
 				C3DDDE7C25658FB7001DB55A /* CoreDataPersistence.swift */,
 				C35D5A3F25696582009F1655 /* WeatherPersistence.swift */,
 			);
@@ -532,7 +532,7 @@
 				C3B8288425597B1A00D87AF8 /* AlamoWeatherService.swift in Sources */,
 				C3B8289225597D6B00D87AF8 /* WeeklyWeather.swift in Sources */,
 				C3B827972556E6B600D87AF8 /* AppDelegate.swift in Sources */,
-				C3ACD437256458AB003D3222 /* Persistence.swift in Sources */,
+				C3ACD437256458AB003D3222 /* TaskStore.swift in Sources */,
 				C3B827992556E6B600D87AF8 /* SceneDelegate.swift in Sources */,
 				C3B828A325597FAE00D87AF8 /* UserDefaultsPersistence.swift in Sources */,
 			);

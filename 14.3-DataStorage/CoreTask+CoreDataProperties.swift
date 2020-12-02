@@ -1,3 +1,11 @@
+//
+//  CoreTask+CoreDataProperties.swift
+//  
+//
+//  Created by Ruslan Murin on 01.12.2020.
+//
+//
+
 import Foundation
 import CoreData
 
