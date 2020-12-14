@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		AF6540565A011DDEB4717B6F /* Pods_14_3_DataStorageTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9F153373A1E3CEA553D3593 /* Pods_14_3_DataStorageTests.framework */; };
 		B6DBE81F91BB989077435F8B /* Pods_14_3_DataStorage_14_3_DataStorageUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB2D66CAA8E8C464C3E5985 /* Pods_14_3_DataStorage_14_3_DataStorageUITests.framework */; };
+		C354076C25827A520042DE19 /* CoreDataSingleton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C354076B25827A520042DE19 /* CoreDataSingleton.swift */; };
 		C35D5A4025696582009F1655 /* WeatherPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C35D5A3F25696582009F1655 /* WeatherPersistence.swift */; };
 		C3ACD42625642A03003D3222 /* RealmPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ACD42525642A03003D3222 /* RealmPersistence.swift */; };
 		C3ACD42C256438E2003D3222 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C3ACD42B256438E2003D3222 /* TaskTableViewCell.swift */; };
@@ -80,6 +81,7 @@
 		9B98AA43A932626A418B3327 /* Pods_14_3_DataStorage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_14_3_DataStorage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB2D66CAA8E8C464C3E5985 /* Pods_14_3_DataStorage_14_3_DataStorageUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_14_3_DataStorage_14_3_DataStorageUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B549C95EF2298E6110482E32 /* Pods-14.3-DataStorage-14.3-DataStorageUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-14.3-DataStorage-14.3-DataStorageUITests.debug.xcconfig"; path = "Target Support Files/Pods-14.3-DataStorage-14.3-DataStorageUITests/Pods-14.3-DataStorage-14.3-DataStorageUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		C354076B25827A520042DE19 /* CoreDataSingleton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataSingleton.swift; sourceTree = "<group>"; };
 		C35D5A3F25696582009F1655 /* WeatherPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherPersistence.swift; sourceTree = "<group>"; };
 		C3ACD42525642A03003D3222 /* RealmPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmPersistence.swift; sourceTree = "<group>"; };
 		C3ACD42B256438E2003D3222 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
@@ -191,7 +193,7 @@
 			children = (
 				C3B827962556E6B600D87AF8 /* AppDelegate.swift */,
 				C3B827982556E6B600D87AF8 /* SceneDelegate.swift */,
-				C3B828A125597F9300D87AF8 /* Persistance */,
+				C3B828A125597F9300D87AF8 /* Persistence */,
 				C3B827FA2559617C00D87AF8 /* Weather */,
 				C3B827F1255960DE00D87AF8 /* ViewControllers */,
 				C3B8279C2556E6B600D87AF8 /* Main.storyboard */,
@@ -253,16 +255,17 @@
 			path = WeatherService;
 			sourceTree = "<group>";
 		};
-		C3B828A125597F9300D87AF8 /* Persistance */ = {
+		C3B828A125597F9300D87AF8 /* Persistence */ = {
 			isa = PBXGroup;
 			children = (
 				C3B828A225597FAE00D87AF8 /* UserDefaultsPersistence.swift */,
-				C3ACD42525642A03003D3222 /* RealmPersistence.swift */,
 				C3ACD436256458AB003D3222 /* TaskStore.swift */,
+				C3ACD42525642A03003D3222 /* RealmPersistence.swift */,
 				C3DDDE7C25658FB7001DB55A /* CoreDataPersistence.swift */,
+				C354076B25827A520042DE19 /* CoreDataSingleton.swift */,
 				C35D5A3F25696582009F1655 /* WeatherPersistence.swift */,
 			);
-			path = Persistance;
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 		FD53D9F89AE3FE503C164803 /* Pods */ = {
@@ -525,6 +528,7 @@
 				C3ACD42625642A03003D3222 /* RealmPersistence.swift in Sources */,
 				C3B827EA2559602900D87AF8 /* TasksViewController.swift in Sources */,
 				C3B8289C25597E0A00D87AF8 /* WeatherViewController.swift in Sources */,
+				C354076C25827A520042DE19 /* CoreDataSingleton.swift in Sources */,
 				C3B827E82559602900D87AF8 /* MainTabBarController.swift in Sources */,
 				C3DDDE7D25658FB7001DB55A /* CoreDataPersistence.swift in Sources */,
 				C3B8280B2559625B00D87AF8 /* WeeklyTableViewCell.swift in Sources */,
@@ -718,6 +722,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "14.3-DataStorage/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -742,6 +747,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "14.3-DataStorage/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

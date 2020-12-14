@@ -12,6 +12,7 @@ class MainTabBarController: UITabBarController {
         weatherVC.weatherService = AlamoWeatherService()
         realmVC.taskStore = RealmPersistence()
         coreDataVC.taskStore = CoreDataPersistence()
+        coreDataVC.isCoredata = true
         
         let controllers = [userDefautsVC, realmVC, coreDataVC, weatherVC]
         self.viewControllers = controllers

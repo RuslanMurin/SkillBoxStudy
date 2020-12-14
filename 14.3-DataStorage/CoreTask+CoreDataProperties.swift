@@ -2,7 +2,7 @@
 //  CoreTask+CoreDataProperties.swift
 //  
 //
-//  Created by Ruslan Murin on 01.12.2020.
+//  Created by Ruslan Murin on 10.12.2020.
 //
 //
 
@@ -17,5 +17,7 @@ extension CoreTask {
     }
 
     @NSManaged public var text: String?
+    @NSManaged public var key: String?
+    
 
 }

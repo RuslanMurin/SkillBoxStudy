@@ -1,28 +1,38 @@
 import UIKit
+import CoreData
+import RealmSwift
 
 class TasksViewController: UIViewController {
+    @IBOutlet weak var taskButton: UIButton!
     @IBOutlet weak var tasksTableView: UITableView!
     
-    var loadMoreStatus = false
     var taskStore: TaskStore?
-    var data = [Task]()
+    var isCoredata = false
+    var tasks: [CoreTask]?
+    var realmTasks: [Task]?
+    
+    
+    func fetchTasks(_ isCoreData: Bool){
+        
+        if isCoredata{
+            tasks = try! CoreDataSingleton.shared.persistentContainer?.viewContext.fetch(CoreTask.fetchRequest()) }
+        
+        else{ realmTasks = Array(try! Realm().objects(Task.self)) }
+    }
+    
+    func changeButton(){
+        taskButton.setTitle("Load Tasks", for: .normal)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        fetchTasks(isCoredata)
+        guard CoreDataSingleton.shared.persistentContainer != nil else { return changeButton() }
+    }
+    
     static func storyboardInstance() -> TasksViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         return storyboard.instantiateViewController(identifier: "Tasks") as? TasksViewController ?? TasksViewController()
-    }
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        RealmPersistence.shared.fetchData(completion: {[weak self] result in
-            switch result{
-            case .success(let data):
-                self?.data.append(contentsOf: data)
-                DispatchQueue.main.async{
-                    self?.tasksTableView.reloadData()}
-            case .failure(_): break
-            }
-        })
-        
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -31,67 +41,55 @@ class TasksViewController: UIViewController {
     }
     
     @IBAction func addTask(_ sender: Any) {
-        taskStore?.addTask()
-        tasksTableView.reloadData()
+        if CoreDataSingleton.shared.persistentContainer == nil{
+            CoreDataSingleton.shared.initialize()
+            fetchTasks(isCoredata)
+            tasksTableView.reloadData()
+            taskButton.setTitle("New Task", for: .normal)
+        }
+        
+        else{
+            taskStore?.addTask()
+            fetchTasks(isCoredata)
+            tasksTableView.reloadData()
+        }
     }
     
     @IBAction func deletePressed(_ sender: UIButton) {
-        taskStore?.removeTask(withIndex: sender.tag)
+        if isCoredata{
+            taskStore?.removeTask(withKey: tasks?[sender.tag].key ?? "")
+        }
+        else{
+            taskStore?.removeTask(withKey: realmTasks?[sender.tag].taskID ?? "")
+        }
+        fetchTasks(isCoredata)
         tasksTableView.reloadData()
     }
     
     @IBAction func textEdited(_ sender: UITextField) {
-        taskStore?.editTask(withIndex: sender.tag, withText: sender.text ?? "New Task")
+        if isCoredata{
+            taskStore?.editTask(withKey: tasks?[sender.tag].key ?? "", withText: sender.text ?? "New Task")}
+        else{
+            taskStore?.editTask(withKey: realmTasks?[sender.tag].taskID ?? "", withText: sender.text ?? "New Task")
+        }
     }
 }
 
 extension TasksViewController: UITableViewDelegate, UITableViewDataSource, UIScrollViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-//        return taskStore?.tasksCount() ?? 0
-        return data.count
+        taskStore?.tasksCount() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as! TaskTableViewCell
         
-        cell.taskTextField.text = taskStore?.taskText(withIndex: indexPath.row)
-//        cell.taskTextField.text = "\(indexPath.row)"
+        if isCoredata{ cell.taskTextField.text = taskStore?.taskText(withKey: tasks?[indexPath.row].key ?? "") }
+        
+        else{ cell.taskTextField.text = taskStore?.taskText(withKey: realmTasks?[indexPath.row].taskID ?? "") }
+        
         cell.deleteButton.tag = indexPath.row
         cell.taskTextField.tag = indexPath.row
-        
         return cell
     }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard indexPath.row == taskStore?.tasksCount() ?? 1 - 1 else { return }
-        
-    }
-    
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let currentOffset = scrollView.contentOffset.y //не могу понять, что крашит подгрузку, вызов fetchData непрекращается
-        if currentOffset > tasksTableView.contentSize.height - 100 - scrollView.frame.size.height{
-            guard !RealmPersistence.shared.isPaginating else {
-                return
-            }
-
-            RealmPersistence.shared.fetchData(pagination: true){ [self] result in
-                switch result{
-                case .success(let moreData):
-                    data.append(contentsOf: moreData)
-                    DispatchQueue.main.async {
-                        tasksTableView.reloadData()
-                    }
-                case .failure(_): break
-                }
-            }
-            print("fetch more")
-        }
-        else{
-            RealmPersistence.shared.fetchData(pagination: false, completion: {_ in })
-        }
-    }
-
-    
 }

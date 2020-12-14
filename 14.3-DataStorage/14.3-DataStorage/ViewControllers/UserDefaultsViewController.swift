@@ -5,7 +5,7 @@ class UserDefaultsViewController: UIViewController {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var lastnameTextField: UITextField!
     
-    let names: [UserDefaultsPersistence] = []
+    let userDefaults = UserDefaultsPersistence.shared
     
     static func storyboardInstance() -> UserDefaultsViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -14,26 +14,21 @@ class UserDefaultsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for name in UserDefaultsPersistence.shared.allNames ?? [] {
-            print(name.description)
-        }
+        nameTextField.text = userDefaults.name
+        lastnameTextField.text = userDefaults.lastName
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
         view.endEditing(true)
     }
-    
-    @IBAction func enterTapped(_ sender: UIButton) {
-        addNames(name: nameTextField.text ?? "", lastName: lastnameTextField.text ?? "")
-    }
-    @IBAction func clearTapped(_ sender: Any) {
-        UserDefaultsPersistence.shared.allNames = []
+
+    @IBAction func nameChanged(_ sender: UITextField) {
+        userDefaults.name = nameTextField.text ?? ""
     }
     
-    func addNames(name: String, lastName: String){
-        if name != "" && lastName != ""{
-            UserDefaultsPersistence.shared.allNames?.append("\(name) \(lastName)")
-        }
+    @IBAction func lastNameChanged(_ sender: UITextField) {
+        userDefaults.lastName = lastnameTextField.text ?? ""
     }
+    
 }

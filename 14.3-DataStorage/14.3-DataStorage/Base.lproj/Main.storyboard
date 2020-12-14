@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wLf-xc-NTJ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="50" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wLf-xc-NTJ">
                                 <rect key="frame" x="20" y="144" width="374" height="728"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <viewLayoutGuide key="contentLayoutGuide" id="R1P-0h-d1B"/>
@@ -89,6 +89,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="taskButton" destination="tEa-6H-Kh3" id="A7F-ez-4TN"/>
                         <outlet property="tasksTableView" destination="wLf-xc-NTJ" id="IKE-fj-0h6"/>
                     </connections>
                 </viewController>
@@ -117,41 +118,29 @@
                                         <rect key="frame" x="0.0" y="0.0" width="147" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="nameChanged:" destination="QHE-i0-rRD" eventType="editingChanged" id="NMu-fD-Fhd"/>
+                                        </connections>
                                     </textField>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="LastName" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Nay-iT-4NE">
                                         <rect key="frame" x="167" y="0.0" width="147" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
+                                        <connections>
+                                            <action selector="lastNameChanged:" destination="QHE-i0-rRD" eventType="editingChanged" id="dIn-v7-eAr"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K2q-Rr-1qg">
-                                <rect key="frame" x="188.5" y="158" width="37" height="30"/>
-                                <state key="normal" title="Enter"/>
-                                <connections>
-                                    <action selector="enterTapped:" destination="QHE-i0-rRD" eventType="touchUpInside" id="R9W-bn-V9n"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSY-Q0-BrF">
-                                <rect key="frame" x="189" y="218" width="36" height="30"/>
-                                <state key="normal" title="Clear"/>
-                                <connections>
-                                    <action selector="clearTapped:" destination="QHE-i0-rRD" eventType="touchUpInside" id="o4g-QQ-7Ac"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dMX-2r-RTn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="eej-dD-kR9" firstAttribute="centerY" secondItem="dMX-2r-RTn" secondAttribute="centerY" id="5c2-S9-mIh"/>
                             <constraint firstItem="eej-dD-kR9" firstAttribute="centerX" secondItem="dMX-2r-RTn" secondAttribute="centerX" id="69c-m8-WGZ"/>
-                            <constraint firstItem="K2q-Rr-1qg" firstAttribute="top" secondItem="XCa-MP-S0h" secondAttribute="bottom" constant="30" id="HKa-k5-QCg"/>
                             <constraint firstItem="dMX-2r-RTn" firstAttribute="trailing" secondItem="XCa-MP-S0h" secondAttribute="trailing" constant="50" id="Lyq-Pv-GWc"/>
-                            <constraint firstItem="K2q-Rr-1qg" firstAttribute="centerX" secondItem="fq8-Te-cAG" secondAttribute="centerX" id="T5L-4T-AMa"/>
-                            <constraint firstItem="QSY-Q0-BrF" firstAttribute="top" secondItem="K2q-Rr-1qg" secondAttribute="bottom" constant="30" id="YUK-gd-ZaF"/>
                             <constraint firstItem="XCa-MP-S0h" firstAttribute="top" secondItem="dMX-2r-RTn" secondAttribute="top" constant="50" id="iNs-Aj-uhq"/>
                             <constraint firstItem="XCa-MP-S0h" firstAttribute="leading" secondItem="dMX-2r-RTn" secondAttribute="leading" constant="50" id="xWk-PI-rL9"/>
-                            <constraint firstItem="QSY-Q0-BrF" firstAttribute="centerX" secondItem="fq8-Te-cAG" secondAttribute="centerX" id="xZK-Pu-bU5"/>
                         </constraints>
                     </view>
                     <connections>

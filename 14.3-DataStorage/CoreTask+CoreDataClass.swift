@@ -2,7 +2,7 @@
 //  CoreTask+CoreDataClass.swift
 //  
 //
-//  Created by Ruslan Murin on 18.11.2020.
+//  Created by Ruslan Murin on 10.12.2020.
 //
 //
 

@@ -16,19 +16,19 @@ class WeatherViewController: UIViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         return storyboard.instantiateViewController(identifier: "Weather") as? WeatherViewController ?? WeatherViewController()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.cityLabel.text = UserDefaults.standard.string(forKey: "Persistence.CityKey")
-        self.tempLabel.text = "\(Int(UserDefaults.standard.double(forKey: "Persistence.CurrTempKey") - 273.0)) C"
-        self.descriptionLabel.text = UserDefaults.standard.string(forKey: "Persistence.CurrDescrKey")
-        self.mainDescriptionLabel.text = "Сейчас \(String(describing: UserDefaults.standard.string(forKey: "Persistence.CurrDescrKey"))). Максимальная температура воздуха: \(Int(UserDefaults.standard.double(forKey: "Persistence.CurrMaxTemp") - 273.0)) C. Минимальная температура воздуха: \(Int(UserDefaults.standard.double(forKey: "Persistence.CurrMinTemp") - 273.0)) C. Атмосферное давление: \(UserDefaults.standard.integer(forKey: "Persistence.CurrPressure"))мм.рт.ст. Влажность: \(String(describing: weather?.main.humidity))%."
-        mainTableView.reloadData()
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         
+        self.cityLabel.text = UserDefaults.standard.string(forKey: "Persi   stence.CityKey")
+        self.tempLabel.text = "\(Int(UserDefaults.standard.double(forKey: "Persistence.CurrTempKey") - 273.0)) C"
+        self.descriptionLabel.text = UserDefaults.standard.string(forKey: "Persistence.CurrDescrKey")
+        self.mainDescriptionLabel.text = "Сейчас \(String(describing: UserDefaults.standard.string(forKey: "Persistence.CurrDescrKey"))). Максимальная температура воздуха: \(Int(UserDefaults.standard.double(forKey: "Persistence.CurrMaxTemp") - 273.0)) C. Минимальная температура воздуха: \(Int(UserDefaults.standard.double(forKey: "Persistence.CurrMinTemp") - 273.0)) C. Атмосферное давление: \(UserDefaults.standard.integer(forKey: "Persistence.CurrPressure"))мм.рт.ст. Влажность: \(String(describing: weather?.main.humidity))%."
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         weatherService?.dayLoad(completion: { weather in self.weather = weather
             self.cityLabel.text = weather.name
             self.tempLabel.text = "\(Int(weather.main.temp - 273.0)) C"
@@ -37,11 +37,17 @@ class WeatherViewController: UIViewController {
             
             self.weatherService?.weekLoad(completion: { week in self.week = week
                 self.mainTableView.reloadData()
-                WeatherPersistence.shared.storeDayWeather(weather)
-                WeatherPersistence.shared.storeWeekWeather(week)
             })
         })
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        guard week != nil && weather != nil else {return}
+        WeatherPersistence.shared.storeDayWeather(weather!)
+        WeatherPersistence.shared.storeWeekWeather(week!)
+    }
+    
 }
 
 extension WeatherViewController: UITableViewDelegate, UITableViewDataSource{
@@ -50,7 +56,6 @@ extension WeatherViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "WeatherCell") as! WeeklyTableViewCell
         
         cell.descriptionLabel.text = week?.daily[indexPath.row].weather[0].weatherDescription
