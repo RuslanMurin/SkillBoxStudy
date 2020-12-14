@@ -1,28 +1,30 @@
 import UIKit
-import Alamofire
+import Kingfisher
 
 class ViewController: UIViewController {
     @IBOutlet weak var mainCollectionView: UICollectionView!
     
     var rickData: RickAndMortyDataBase?
+    var rickAPI = RamAPI()
+    var tempData: [Result]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Alamofire.request("https://rickandmortyapi.com/api/character").responseJSON{response in
-            if let data = response.data{
-                let loadedData = try? JSONDecoder().decode(RickAndMortyDataBase.self, from: data as Data)
-                self.rickData = loadedData
-                self.mainCollectionView.reloadData()
-            }
-        }
+        rickAPI.fetchCharacters(completion: {data in
+            self.rickData = data
+            self.tempData = Array(data.results[0...2])
+            self.mainCollectionView.reloadData()
+        })
+        
+        print(rickData?.results.count ?? 3)
     }
-    
 }
 
-extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
+
+extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate{
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return rickData?.results.count ?? 0
+        return tempData?.count ?? 0
         
     }
     
@@ -36,17 +38,33 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource{
         cell.speciesLabel.text = rickData?.results[indexPath.row].species.rawValue
         cell.statusLabel.text = "[\(rickData?.results[indexPath.row].status.rawValue ?? "")]"
         
-        if let url = URL(string: rickData?.results[indexPath.row].image ?? "") {
-            do {
-                let data: Data = try Data(contentsOf: url)
-                cell.characterImageView.image = UIImage(data: data)
-            } catch {
-                print("Error")
-            }
-        }
+        cell.characterImageView.kf.indicatorType = .activity
+        cell.characterImageView.kf.setImage(with: URL(string: rickData?.results[indexPath.row].image ?? ""))
+        
         
         return cell
     }
     
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard tempData?.count ?? 1 < (rickData?.results.count ?? 1) else { return } // проверка на достижение предельного значения
+        
+        let currentOffset = scrollView.contentOffset.y
+        if currentOffset > mainCollectionView.contentSize.height - scrollView.frame.size.height{ // область начала загрузки
+            
+            loadMore() //Подгружаем еще
+        }
+        mainCollectionView.reloadData()
+    }
     
+    func loadMore(){
+        if let results = rickData?.results{
+            DispatchQueue.main.async{ [self] in
+                if results.count - (tempData?.count ?? 0) > 3{
+                    tempData?.append(contentsOf: results[0...2])
+                }
+                else { tempData?.append(results[0])
+                }
+            }
+        }
+    }
 }

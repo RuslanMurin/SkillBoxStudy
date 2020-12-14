@@ -16,6 +16,7 @@
 		C34F881A2550AF500016D0A0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C34F88182550AF500016D0A0 /* LaunchScreen.storyboard */; };
 		C34F88222550B3A50016D0A0 /* RickAndMortyDataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34F88212550B3A50016D0A0 /* RickAndMortyDataBase.swift */; };
 		C34F88262550BC2E0016D0A0 /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C34F88252550BC2E0016D0A0 /* BaseCollectionViewCell.swift */; };
+		C36DA8F62577EC7800663C32 /* RaMAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C36DA8F52577EC7800663C32 /* RaMAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		C34F881B2550AF500016D0A0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C34F88212550B3A50016D0A0 /* RickAndMortyDataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RickAndMortyDataBase.swift; sourceTree = "<group>"; };
 		C34F88252550BC2E0016D0A0 /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		C36DA8F52577EC7800663C32 /* RaMAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RaMAPI.swift; sourceTree = "<group>"; };
 		D1AA2FAF8A60A6D202C029B5 /* Pods_12_1_Rick_And_Morty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_12_1_Rick_And_Morty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E60AF80F2772ED214AD06B36 /* Pods-12.1-Rick-And-Morty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-12.1-Rick-And-Morty.release.xcconfig"; path = "Target Support Files/Pods-12.1-Rick-And-Morty/Pods-12.1-Rick-And-Morty.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -86,6 +88,7 @@
 			children = (
 				C34F880D2550AF4E0016D0A0 /* AppDelegate.swift */,
 				C34F880F2550AF4E0016D0A0 /* SceneDelegate.swift */,
+				C36DA8F52577EC7800663C32 /* RaMAPI.swift */,
 				C34F88112550AF4E0016D0A0 /* ViewController.swift */,
 				C34F88212550B3A50016D0A0 /* RickAndMortyDataBase.swift */,
 				C34F88252550BC2E0016D0A0 /* BaseCollectionViewCell.swift */,
@@ -126,7 +129,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1160;
-				LastUpgradeCheck = 1160;
+				LastUpgradeCheck = 1210;
 				ORGANIZATIONNAME = "Ruslan Murin";
 				TargetAttributes = {
 					C34F88092550AF4D0016D0A0 = {
@@ -213,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C34F88122550AF4E0016D0A0 /* ViewController.swift in Sources */,
+				C36DA8F62577EC7800663C32 /* RaMAPI.swift in Sources */,
 				C34F88222550B3A50016D0A0 /* RickAndMortyDataBase.swift in Sources */,
 				C34F880E2550AF4E0016D0A0 /* AppDelegate.swift in Sources */,
 				C34F88102550AF4E0016D0A0 /* SceneDelegate.swift in Sources */,
@@ -268,6 +272,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -328,6 +333,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

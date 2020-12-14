@@ -3,6 +3,7 @@ use_frameworks!
 
 target '12.1-Rick-And-Morty' do
 
-pod 'Alamofire' 
+pod 'Alamofire'
+pod 'Kingfisher'
 
 end
