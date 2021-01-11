@@ -21,46 +21,41 @@ stringArray
 
 let names = ["John", "Max", "Steve", "Tim", "Eve", "Sarah"]
 
-let stringNames = names.reduce("") { "\($0) \($1)" }
+let stringNames = names.reduce("") { $0 == "" ? "\($1)" : "\($0) \($1)"
+}
 
 stringNames
 
 //6  Напишите функцию, которая принимает в себя функцию c типом (Void) -&gt; Void, которая будет вызвана с задержкой в две секунды.
 
-func testFunc(void: Void) -> Void{
-    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: { return void })
+func testFunc(_ closure: @escaping () -> Void){
+    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(2), execute: { closure() })
 }
-
-testFunc(void: print("Hello"))
+testFunc({ print("Hi after 2 seconds") })
 
 //7 Напишите функцию, которая принимает в себя две функции и возвращает функцию, которая при вызове выполнит первые две функции.
-//Переопределение оператора + будет считаться?
-func +(first: Void, second: Void) -> (Void, Void){
-    return(first, second)
-}
-print("Hola") + print("Mundo")
 
-func twoVoids(first: Void, second: Void) -> (Void, Void){
-    return(first, second)
+var firstClosure: ()->() = { print("1st closure") }
+var secondClosure: ()->() = { print("2nd closure") }
+func completeClosures(a:(), b:()){
+    a
+    b
 }
-twoVoids(first: print("Hello"), second: print("World"))
+completeClosures(a: firstClosure(), b: secondClosure())
+
 
 //8 Напишите функцию, которая сортирует массив по переданному алгоритму: принимает в себя массив чисел и функцию, которая берёт на вход два числа, возвращает Bool (должно ли первое число идти после второго) и возвращает массив, отсортированный по этому алгоритму.
-// Тут я не понял условие: должно сортироваться по какому алгоритму: возрастание? Убывание? Если честно, вообще не понял суть задачи, смог начать логику: в правильном направлении думаю?
-typealias Sor = (Int, Int)
-
-func sorting(sor: Sor) -> Bool{
-    return sor.0 > sor.1
+func forward(_ x1: Int, _ x2: Int)->Bool{
+    return x2 > x1
 }
-sorting(sor: (300, 55))
-
-func superSorting(arr: [Int], sor: Sor) -> [Int]{
-    return []
+func superSort(arr: [Int], by: ()) -> [Int]{
+    return arr
 }
-
+intArray.sorted(by: forward)
 
 //9
 /*
- prefix, postfix, infix - пользовательские операторы. Объявляются на глобальном уровне(например prefix operator +++). prefix, postfix - определяет приоритео оператора соответственно.
- Каждый infix оператор принадлежит к своей приоритетной группе.
+prefix/postfix - унарные операторы, infix - бинарный.
+ инфиксный оператор называется так, потому что он работает с двумя целями МЕЖДУ которыми находится
+ унарные операторы являются префиксными, если они предшествуют своей цели(-5), и постфиксными, если они идут после неё(a!)
  */
