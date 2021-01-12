@@ -8,6 +8,7 @@ class TasksViewController: UIViewController {
     
     var taskStore: TaskStore?
     var isCoredata = false
+<<<<<<< Updated upstream
     var tasks: [CoreTask]?
     var realmTasks: [Task]?
     
@@ -19,6 +20,9 @@ class TasksViewController: UIViewController {
         
         else{ realmTasks = Array(try! Realm().objects(Task.self)) }
     }
+=======
+    var tasks: [Task]?
+>>>>>>> Stashed changes
     
     func changeButton(){
         taskButton.setTitle("Load Tasks", for: .normal)
@@ -26,8 +30,15 @@ class TasksViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+<<<<<<< Updated upstream
         fetchTasks(isCoredata)
         guard CoreDataSingleton.shared.persistentContainer != nil else { return changeButton() }
+=======
+        tasks = taskStore?.fetchAll() ?? nil
+        guard tasks != nil else { return changeButton()
+        }
+        DispatchQueue.main.async { self.tasksTableView.reloadData() }
+>>>>>>> Stashed changes
     }
     
     static func storyboardInstance() -> TasksViewController {
@@ -41,6 +52,7 @@ class TasksViewController: UIViewController {
     }
     
     @IBAction func addTask(_ sender: Any) {
+<<<<<<< Updated upstream
         if CoreDataSingleton.shared.persistentContainer == nil{
             CoreDataSingleton.shared.initialize()
             fetchTasks(isCoredata)
@@ -63,15 +75,33 @@ class TasksViewController: UIViewController {
             taskStore?.removeTask(withKey: realmTasks?[sender.tag].taskID ?? "")
         }
         fetchTasks(isCoredata)
+=======
+        
+        taskStore?.addTask()
+        tasks = taskStore?.fetchAll()
+        tasksTableView.reloadData()
+        
+    }
+    
+    @IBAction func deletePressed(_ sender: UIButton) {
+        taskStore?.removeTask(withKey: tasks?[sender.tag].key ?? "")
+
+>>>>>>> Stashed changes
         tasksTableView.reloadData()
     }
     
     @IBAction func textEdited(_ sender: UITextField) {
+<<<<<<< Updated upstream
         if isCoredata{
             taskStore?.editTask(withKey: tasks?[sender.tag].key ?? "", withText: sender.text ?? "New Task")}
         else{
             taskStore?.editTask(withKey: realmTasks?[sender.tag].taskID ?? "", withText: sender.text ?? "New Task")
         }
+=======
+
+        taskStore?.editTask(withKey: tasks?[sender.tag].key ?? "", withText: sender.text ?? "")
+    
+>>>>>>> Stashed changes
     }
 }
 
@@ -84,9 +114,13 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource, UIScr
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TaskCell", for: indexPath) as! TaskTableViewCell
         
+<<<<<<< Updated upstream
         if isCoredata{ cell.taskTextField.text = taskStore?.taskText(withKey: tasks?[indexPath.row].key ?? "") }
         
         else{ cell.taskTextField.text = taskStore?.taskText(withKey: realmTasks?[indexPath.row].taskID ?? "") }
+=======
+        cell.taskTextField.text = taskStore?.taskText(withKey: tasks?[indexPath.row].key ?? "")
+>>>>>>> Stashed changes
         
         cell.deleteButton.tag = indexPath.row
         cell.taskTextField.tag = indexPath.row

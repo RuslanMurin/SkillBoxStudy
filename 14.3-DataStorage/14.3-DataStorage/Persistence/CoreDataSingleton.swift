@@ -8,8 +8,13 @@ class CoreDataSingleton{
     
     private(set) var persistentContainer: NSPersistentContainer?
     
+<<<<<<< Updated upstream
     func initialize(){
         let persistentContainer: NSPersistentContainer = {
+=======
+    func initialize(completion: @escaping () -> (Void)){
+
+>>>>>>> Stashed changes
              let container = NSPersistentContainer(name: "_4_3_DataStorage")
              DispatchQueue.global(qos: .background).async {
                  container.loadPersistentStores(completionHandler: { (storeDescription, error) in
@@ -17,11 +22,20 @@ class CoreDataSingleton{
                          fatalError("Unresolved error \(error), \(error.userInfo)")
                      }
                      container.viewContext.automaticallyMergesChangesFromParent = true
+<<<<<<< Updated upstream
                  })
              }
              return container
          }()
         self.persistentContainer = persistentContainer
+=======
+                    
+                    self.persistentContainer = container
+                    
+                    completion()
+                 })
+             }
+>>>>>>> Stashed changes
     }
     
     func saveContext () {
