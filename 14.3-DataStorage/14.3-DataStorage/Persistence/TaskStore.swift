@@ -12,9 +12,6 @@ protocol TaskStore {
     
     func tasksCount() -> Int
     
-<<<<<<< Updated upstream
-=======
     func fetchAll() -> [Task]
     
->>>>>>> Stashed changes
 }

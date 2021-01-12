@@ -2,9 +2,6 @@ import Foundation
 import CoreData
 
 class CoreDataPersistence:  Task, TaskStore{
-<<<<<<< Updated upstream
-
-=======
     func fetchAll() -> [Task] {
         var tasks: [Task] = []
         do{
@@ -16,7 +13,6 @@ class CoreDataPersistence:  Task, TaskStore{
         return tasks
     }
     
->>>>>>> Stashed changes
     let container = CoreDataSingleton.shared.persistentContainer
     
     let fetchRequest: NSFetchRequest<CoreTask> = CoreTask.fetchRequest()
@@ -31,24 +27,6 @@ class CoreDataPersistence:  Task, TaskStore{
         let entity = CoreTask(context: CoreDataSingleton.shared.persistentContainer!.viewContext)
         entity.key = UUID().uuidString
         CoreDataSingleton.shared.saveContext()
-<<<<<<< Updated upstream
-    }
-    
-    func tasksCount() -> Int {
-        return try! container?.viewContext.fetch(fetchRequest).count ?? 0
-    }
-    
-    func removeTask(withKey: String) {
-        guard let task = try! container?.viewContext.fetch(predicating(withKey))[0] else { return }
-        do{
-            container?.viewContext.delete(task)
-            CoreDataSingleton.shared.saveContext()
-            }
-    }
-    
-    func editTask(withKey: String, withText: String) {
-        guard let task = try! container?.viewContext.fetch(predicating(withKey))[0] else { return }
-=======
         print(tasksCount())
     }
     
@@ -71,17 +49,12 @@ class CoreDataPersistence:  Task, TaskStore{
     
     func editTask(withKey: String, withText: String) {
         guard let task = try? container?.viewContext.fetch(predicating(withKey)).first else { return }
->>>>>>> Stashed changes
         task.text = withText
         CoreDataSingleton.shared.saveContext()
     }
     
     func taskText(withKey: String) -> String {
-<<<<<<< Updated upstream
-        guard let task = try! container?.viewContext.fetch(predicating(withKey))[0] else { return ""}
-=======
         guard let task = try? container?.viewContext.fetch(predicating(withKey))[0] else { return ""}
->>>>>>> Stashed changes
         return task.text ?? ""
     }
 }
