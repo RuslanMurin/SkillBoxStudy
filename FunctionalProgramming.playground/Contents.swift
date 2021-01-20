@@ -23,9 +23,9 @@ let names = ["John", "Max", "Steve", "Tim", "Eve", "Sarah"]
 
 let stringNames = names.reduce("") { $0 == "" ? "\($1)" : "\($0) \($1)"
 }
-
+let anotherStringNames = names.reduce("") {"\($0) \($1)"}.trimmingCharacters(in: .whitespaces) //второй вариант
 stringNames
-
+anotherStringNames
 //6  Напишите функцию, которая принимает в себя функцию c типом (Void) -&gt; Void, которая будет вызвана с задержкой в две секунды.
 
 func testFunc(_ closure: @escaping () -> Void){
@@ -35,23 +35,29 @@ testFunc({ print("Hi after 2 seconds") })
 
 //7 Напишите функцию, которая принимает в себя две функции и возвращает функцию, которая при вызове выполнит первые две функции.
 
-var firstClosure: ()->() = { print("1st closure") }
-var secondClosure: ()->() = { print("2nd closure") }
-func completeClosures(a:(), b:()){
-    a
-    b
+var firstClosure: () -> Void = { print("1st closure") }
+var secondClosure: () -> Void = { print("2nd closure") }
+func completeClosures(a: @escaping() -> Void, b: @escaping() -> Void) -> (() -> Void){
+    let args = [a, b]
+    let closure = {
+        for arg in args{
+            arg()
+        }
+    }
+    return closure
 }
-completeClosures(a: firstClosure(), b: secondClosure())
-
+completeClosures(a: {print("1")}, b: {print("2")})
 
 //8 Напишите функцию, которая сортирует массив по переданному алгоритму: принимает в себя массив чисел и функцию, которая берёт на вход два числа, возвращает Bool (должно ли первое число идти после второго) и возвращает массив, отсортированный по этому алгоритму.
 func forward(_ x1: Int, _ x2: Int)->Bool{
     return x2 > x1
 }
-func superSort(arr: [Int], by: ()) -> [Int]{
-    return arr
+
+func superSort(arr: [Int], by: (Int, Int) -> Bool) -> [Int]{
+    return arr.sorted(by: by)
 }
-intArray.sorted(by: forward)
+let sortedArr = superSort(arr: intArray, by: forward(_:_:))
+print(sortedArr)
 
 //9
 /*
